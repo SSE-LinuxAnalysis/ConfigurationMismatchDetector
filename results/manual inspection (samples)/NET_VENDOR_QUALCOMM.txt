@@ -1,0 +1,52 @@
+Problembeschreibung von Adam:
+    In ACCESSIBILITY (die meisten anderen KAtegorien haben keine Erklärung):
+    "category" even has only 1 element
+   
+\drivers\net\ethernet\qualcomm\Kconfig:5:
+    config NET_VENDOR_QUALCOMM
+        bool "Qualcomm devices"
+        default y
+        ---help---
+          If you have a network (Ethernet) card belonging to this class, say Y.
+
+          Note that the answer to this question doesn't directly affect the
+          kernel: saying N will just cause the configurator to skip all
+          the questions about Qualcomm cards. If you say Y, you will be asked
+          for your specific card in the following questions.
+
+    if NET_VENDOR_QUALCOMM
+
+    config QCA7000
+        tristate "Qualcomm Atheros QCA7000 support"
+        depends on SPI_MASTER && OF
+        ---help---
+          This SPI protocol driver supports the Qualcomm Atheros QCA7000.
+
+          To compile this driver as a module, choose M here. The module
+          will be called qcaspi.
+
+    endif # NET_VENDOR_QUALCOMM
+    
+\drivers\net\ethernet\Makefile:66:
+    obj-$(CONFIG_NET_VENDOR_QUALCOMM) += qualcomm/
+\drivers\net\ethernet\qualcomm\Makefile:5:
+    obj-$(CONFIG_QCA7000) += qcaspi.o
+    qcaspi-objs := qca_spi.o qca_framing.o qca_7k.o qca_debug.o
+    
+Redundante Konfiguration:
+    Aktivierung von NET_VENDOR_QUALCOMM führt zu nächst zu keiner Änderung, es wird 
+    die eigentlich relevante Variable QCA7000 konfigurierbar gemacht.
+    Folgende Konfigurationen führen zum selben Ergebnis:
+    * NET_VENDOR_QUALCOMM=n
+    * NET_VENDOR_QUALCOMM=y && QCA7000=n
+                  
+Problem:
+  * Es handelt sich hierbei um ein Submenü für einen Hersteller, was der Name
+    ja schon andeutet. Wenn dieses Submenü aktiv ist, muss nicht zwangsläufig ein
+    Element ausgewählt werden. Zudem enthält das Menü (aktuell) nur ein Element,
+    ist aber prinzipiell erweiterbar.
+    Meiner Meinung nach existiert nicht wirklich eine sinnvolle Alternative wie
+    man das sauber modellieren könnte. Bestenfalls könnte man den VENDOR Teil
+    als MENU erstellen, dann wären die Abhängigen Variablen immer sichtbar und
+    immer selektierbar.
+ 

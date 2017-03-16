@@ -1,0 +1,10 @@
+Problembeschreibung von Adam:
+    kbuild suggests: PCI_LABEL depends on PCI
+    PCI_LABEL <=> (DMI || ACPI); ACPI depends on PCI, but DMI does not
+    both, PCI and DMI are defined in arch/*, so I don't know whether to make
+    DMI depend on PCI in all of them, or make PCI_LABEL depend on PCI
+
+\drivers\pci\Kconfig:117:
+    config PCI_LABEL
+        def_bool y if (DMI || ACPI)
+        select NLS

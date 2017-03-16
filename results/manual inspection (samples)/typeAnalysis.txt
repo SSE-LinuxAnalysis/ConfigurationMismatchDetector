@@ -1,0 +1,391 @@
+ 
+ACCESSIBILITY:
+/home/suh/template/linux-releases/linux-4.4/drivers/accessibility/Kconfig:1:menuconfig ACCESSIBILITY
+/home/suh/template/linux-releases/linux-4.4/drivers/accessibility/Kconfig-2-	bool "Accessibility support"
+/home/suh/template/linux-releases/linux-4.4/drivers/accessibility/Kconfig-3-	---help---
+ 
+ACPI_APEI_MEMORY_FAILURE:
+/home/suh/template/linux-releases/linux-4.4/drivers/acpi/apei/Kconfig:42:config ACPI_APEI_MEMORY_FAILURE
+/home/suh/template/linux-releases/linux-4.4/drivers/acpi/apei/Kconfig-43-	bool "APEI memory error recovering support"
+/home/suh/template/linux-releases/linux-4.4/drivers/acpi/apei/Kconfig-44-	depends on ACPI_APEI && MEMORY_FAILURE
+ 
+APM_DISPLAY_BLANK:
+/home/suh/template/linux-releases/linux-4.4/arch/x86/Kconfig:2275:config APM_DISPLAY_BLANK
+/home/suh/template/linux-releases/linux-4.4/arch/x86/Kconfig-2276-	bool "Enable console blanking using APM"
+/home/suh/template/linux-releases/linux-4.4/arch/x86/Kconfig-2277-	---help---
+ 
+ARCH_HAS_ATOMIC64_DEC_IF_POSITIVE:
+/home/suh/template/linux-releases/linux-4.4/lib/Kconfig:455:config ARCH_HAS_ATOMIC64_DEC_IF_POSITIVE
+/home/suh/template/linux-releases/linux-4.4/lib/Kconfig-456-	def_bool y if GENERIC_ATOMIC64
+/home/suh/template/linux-releases/linux-4.4/lib/Kconfig-457-
+ 
+ARCH_WANT_GENERAL_HUGETLB:
+/home/suh/template/linux-releases/linux-4.4/arch/arm64/Kconfig:532:config ARCH_WANT_GENERAL_HUGETLB
+/home/suh/template/linux-releases/linux-4.4/arch/arm64/Kconfig-533-	def_bool y
+/home/suh/template/linux-releases/linux-4.4/arch/arm64/Kconfig-534-
+--
+/home/suh/template/linux-releases/linux-4.4/arch/arm/Kconfig:1717:config ARCH_WANT_GENERAL_HUGETLB
+/home/suh/template/linux-releases/linux-4.4/arch/arm/Kconfig-1718-	def_bool y
+/home/suh/template/linux-releases/linux-4.4/arch/arm/Kconfig-1719-
+--
+/home/suh/template/linux-releases/linux-4.4/arch/x86/Kconfig:245:config ARCH_WANT_GENERAL_HUGETLB
+/home/suh/template/linux-releases/linux-4.4/arch/x86/Kconfig-246-	def_bool y
+/home/suh/template/linux-releases/linux-4.4/arch/x86/Kconfig-247-
+ 
+ARCH_WANT_OLD_COMPAT_IPC:
+/home/suh/template/linux-releases/linux-4.4/arch/Kconfig:320:config ARCH_WANT_OLD_COMPAT_IPC
+/home/suh/template/linux-releases/linux-4.4/arch/Kconfig-321-	select ARCH_WANT_COMPAT_IPC_PARSE_VERSION
+/home/suh/template/linux-releases/linux-4.4/arch/Kconfig-322-	bool
+ 
+ATH5K_PCI:
+/home/suh/template/linux-releases/linux-4.4/drivers/net/wireless/ath/ath5k/Kconfig:61:config ATH5K_PCI
+/home/suh/template/linux-releases/linux-4.4/drivers/net/wireless/ath/ath5k/Kconfig-62-	bool "Atheros 5xxx PCI bus support"
+/home/suh/template/linux-releases/linux-4.4/drivers/net/wireless/ath/ath5k/Kconfig-63-	depends on (!ATH25 && PCI)
+ 
+BLK_DEV_IDE_SATA:
+/home/suh/template/linux-releases/linux-4.4/drivers/ide/Kconfig:47:config BLK_DEV_IDE_SATA
+/home/suh/template/linux-releases/linux-4.4/drivers/ide/Kconfig-48-	bool "Support for SATA (deprecated; conflicts with libata SATA driver)"
+/home/suh/template/linux-releases/linux-4.4/drivers/ide/Kconfig-49-	default n
+ 
+CHROME_PLATFORMS:
+/home/suh/template/linux-releases/linux-4.4/drivers/platform/chrome/Kconfig:5:menuconfig CHROME_PLATFORMS
+/home/suh/template/linux-releases/linux-4.4/drivers/platform/chrome/Kconfig-6-	bool "Platform support for Chrome hardware"
+/home/suh/template/linux-releases/linux-4.4/drivers/platform/chrome/Kconfig-7-	depends on X86 || ARM || ARM64 || COMPILE_TEST
+ 
+CRYPTO_DEV_CCP:
+/home/suh/template/linux-releases/linux-4.4/drivers/crypto/ccp/Kconfig:1:config CRYPTO_DEV_CCP_DD
+/home/suh/template/linux-releases/linux-4.4/drivers/crypto/ccp/Kconfig-2-	tristate "Cryptographic Coprocessor device driver"
+/home/suh/template/linux-releases/linux-4.4/drivers/crypto/ccp/Kconfig-3-	depends on CRYPTO_DEV_CCP
+--
+/home/suh/template/linux-releases/linux-4.4/drivers/crypto/ccp/Kconfig:12:config CRYPTO_DEV_CCP_CRYPTO
+/home/suh/template/linux-releases/linux-4.4/drivers/crypto/ccp/Kconfig-13-	tristate "Encryption and hashing offload support"
+/home/suh/template/linux-releases/linux-4.4/drivers/crypto/ccp/Kconfig-14-	depends on CRYPTO_DEV_CCP_DD
+--
+/home/suh/template/linux-releases/linux-4.4/drivers/crypto/Kconfig:419:config CRYPTO_DEV_CCP
+/home/suh/template/linux-releases/linux-4.4/drivers/crypto/Kconfig-420-	bool "Support for AMD Cryptographic Coprocessor"
+/home/suh/template/linux-releases/linux-4.4/drivers/crypto/Kconfig-421-	depends on ((X86 && PCI) || (ARM64 && (OF_ADDRESS || ACPI))) && HAS_IOMEM
+ 
+DEBUG_BLK_CGROUP:
+/home/suh/template/linux-releases/linux-4.4/init/Kconfig:1141:config DEBUG_BLK_CGROUP
+/home/suh/template/linux-releases/linux-4.4/init/Kconfig-1142-	bool "Enable Block IO controller debugging"
+/home/suh/template/linux-releases/linux-4.4/init/Kconfig-1143-	depends on BLK_CGROUP
+ 
+DEBUG_OBJECTS_PERCPU_COUNTER:
+/home/suh/template/linux-releases/linux-4.4/lib/Kconfig.debug:440:config DEBUG_OBJECTS_PERCPU_COUNTER
+/home/suh/template/linux-releases/linux-4.4/lib/Kconfig.debug-441-	bool "Debug percpu counter objects"
+/home/suh/template/linux-releases/linux-4.4/lib/Kconfig.debug-442-	depends on DEBUG_OBJECTS
+ 
+DPM_WATCHDOG:
+/home/suh/template/linux-releases/linux-4.4/kernel/power/Kconfig:187:config DPM_WATCHDOG
+/home/suh/template/linux-releases/linux-4.4/kernel/power/Kconfig-188-	bool "Device suspend/resume watchdog"
+/home/suh/template/linux-releases/linux-4.4/kernel/power/Kconfig-189-	depends on PM_DEBUG && PSTORE
+--
+/home/suh/template/linux-releases/linux-4.4/kernel/power/Kconfig:197:config DPM_WATCHDOG_TIMEOUT
+/home/suh/template/linux-releases/linux-4.4/kernel/power/Kconfig-198-	int "Watchdog timeout in seconds"
+/home/suh/template/linux-releases/linux-4.4/kernel/power/Kconfig-199-	range 1 120
+ 
+DVB_AU8522_V4L:
+/home/suh/template/linux-releases/linux-4.4/drivers/media/dvb-frontends/Kconfig:634:config DVB_AU8522_V4L
+/home/suh/template/linux-releases/linux-4.4/drivers/media/dvb-frontends/Kconfig-635-	tristate "Auvitek AU8522 based ATV demod"
+/home/suh/template/linux-releases/linux-4.4/drivers/media/dvb-frontends/Kconfig-636-	depends on VIDEO_V4L2 && I2C
+ 
+DVB_AU8522_V4L_MODULE:
+ 
+EDAC_ATOMIC_SCRUB:
+/home/suh/template/linux-releases/linux-4.4/drivers/edac/Kconfig:6:config EDAC_ATOMIC_SCRUB
+/home/suh/template/linux-releases/linux-4.4/drivers/edac/Kconfig-7-	bool
+/home/suh/template/linux-releases/linux-4.4/drivers/edac/Kconfig-8-
+ 
+EDAC_LEGACY_SYSFS:
+/home/suh/template/linux-releases/linux-4.4/drivers/edac/Kconfig:36:config EDAC_LEGACY_SYSFS
+/home/suh/template/linux-releases/linux-4.4/drivers/edac/Kconfig-37-	bool "EDAC legacy sysfs"
+/home/suh/template/linux-releases/linux-4.4/drivers/edac/Kconfig-38-	default y
+ 
+EXPERT:
+/home/suh/template/linux-releases/linux-4.4/init/Kconfig:1355:menuconfig EXPERT
+/home/suh/template/linux-releases/linux-4.4/init/Kconfig-1356-	bool "Configure standard kernel features (expert users)"
+/home/suh/template/linux-releases/linux-4.4/init/Kconfig-1357-	# Unhide debug options, to make the on-by-default options visible
+ 
+GOOGLE_FIRMWARE:
+/home/suh/template/linux-releases/linux-4.4/drivers/firmware/google/Kconfig:1:config GOOGLE_FIRMWARE
+/home/suh/template/linux-releases/linux-4.4/drivers/firmware/google/Kconfig-2-	bool "Google Firmware Drivers"
+/home/suh/template/linux-releases/linux-4.4/drivers/firmware/google/Kconfig-3-	depends on X86
+ 
+HAVE_CMPXCHG_LOCAL:
+/home/suh/template/linux-releases/linux-4.4/arch/Kconfig:308:config HAVE_CMPXCHG_LOCAL
+/home/suh/template/linux-releases/linux-4.4/arch/Kconfig-309-	bool
+/home/suh/template/linux-releases/linux-4.4/arch/Kconfig-310-
+ 
+HSU_DMA_PCI:
+/home/suh/template/linux-releases/linux-4.4/drivers/dma/hsu/Kconfig:7:config HSU_DMA_PCI
+/home/suh/template/linux-releases/linux-4.4/drivers/dma/hsu/Kconfig-8-	tristate
+/home/suh/template/linux-releases/linux-4.4/drivers/dma/hsu/Kconfig-9-	depends on HSU_DMA && PCI
+ 
+HSU_DMA_PCI_MODULE:
+ 
+KVM_DEBUG_FS:
+/home/suh/template/linux-releases/linux-4.4/arch/x86/Kconfig:704:config KVM_DEBUG_FS
+/home/suh/template/linux-releases/linux-4.4/arch/x86/Kconfig-705-	bool "Enable debug information for KVM Guests in debugfs"
+/home/suh/template/linux-releases/linux-4.4/arch/x86/Kconfig-706-	depends on KVM_GUEST && DEBUG_FS
+ 
+LEGACY_VSYSCALL_NATIVE:
+/home/suh/template/linux-releases/linux-4.4/arch/x86/Kconfig:2049:	config LEGACY_VSYSCALL_NATIVE
+/home/suh/template/linux-releases/linux-4.4/arch/x86/Kconfig-2050-		bool "Native"
+/home/suh/template/linux-releases/linux-4.4/arch/x86/Kconfig-2051-		help
+ 
+LEGACY_VSYSCALL_NONE:
+/home/suh/template/linux-releases/linux-4.4/arch/x86/Kconfig:2068:	config LEGACY_VSYSCALL_NONE
+/home/suh/template/linux-releases/linux-4.4/arch/x86/Kconfig-2069-		bool "None"
+/home/suh/template/linux-releases/linux-4.4/arch/x86/Kconfig-2070-		help
+ 
+LIB80211_DEBUG:
+/home/suh/template/linux-releases/linux-4.4/net/wireless/Kconfig:221:config LIB80211_DEBUG
+/home/suh/template/linux-releases/linux-4.4/net/wireless/Kconfig-222-	bool "lib80211 debugging messages"
+/home/suh/template/linux-releases/linux-4.4/net/wireless/Kconfig-223-	depends on LIB80211
+ 
+MEDIA_SUPPORT:
+/home/suh/template/linux-releases/linux-4.4/drivers/media/Kconfig:5:menuconfig MEDIA_SUPPORT
+/home/suh/template/linux-releases/linux-4.4/drivers/media/Kconfig-6-	tristate "Multimedia support"
+/home/suh/template/linux-releases/linux-4.4/drivers/media/Kconfig-7-	depends on HAS_IOMEM
+ 
+MEDIA_SUPPORT_MODULE:
+ 
+MEMSTICK_UNSAFE_RESUME:
+/home/suh/template/linux-releases/linux-4.4/drivers/memstick/core/Kconfig:7:config MEMSTICK_UNSAFE_RESUME
+/home/suh/template/linux-releases/linux-4.4/drivers/memstick/core/Kconfig-8-        bool "Allow unsafe resume (DANGEROUS)"
+/home/suh/template/linux-releases/linux-4.4/drivers/memstick/core/Kconfig-9-        help
+ 
+MICREL_KS8995MA:
+/home/suh/template/linux-releases/linux-4.4/drivers/net/phy/Kconfig:261:config MICREL_KS8995MA
+/home/suh/template/linux-releases/linux-4.4/drivers/net/phy/Kconfig-262-	tristate "Micrel KS8995MA 5-ports 10/100 managed Ethernet switch"
+/home/suh/template/linux-releases/linux-4.4/drivers/net/phy/Kconfig-263-	depends on SPI
+ 
+MICREL_KS8995MA_MODULE:
+ 
+MTD_OTP:
+/home/suh/template/linux-releases/linux-4.4/drivers/mtd/chips/Kconfig:147:config MTD_OTP
+/home/suh/template/linux-releases/linux-4.4/drivers/mtd/chips/Kconfig-148-	bool "Protection Registers aka one-time programmable (OTP) bits"
+/home/suh/template/linux-releases/linux-4.4/drivers/mtd/chips/Kconfig-149-	depends on MTD_CFI_ADV_OPTIONS
+ 
+VENDOR_AGERE:
+ 
+NET_VENDOR_ARC:
+/home/suh/template/linux-releases/linux-4.4/drivers/net/ethernet/arc/Kconfig:5:config NET_VENDOR_ARC
+/home/suh/template/linux-releases/linux-4.4/drivers/net/ethernet/arc/Kconfig-6-	bool "ARC devices"
+/home/suh/template/linux-releases/linux-4.4/drivers/net/ethernet/arc/Kconfig-7-	default y
+ 
+NET_VENDOR_AURORA:
+/home/suh/template/linux-releases/linux-4.4/drivers/net/ethernet/aurora/Kconfig:1:config NET_VENDOR_AURORA
+/home/suh/template/linux-releases/linux-4.4/drivers/net/ethernet/aurora/Kconfig-2-	bool "Aurora VLSI devices"
+/home/suh/template/linux-releases/linux-4.4/drivers/net/ethernet/aurora/Kconfig-3-	help
+ 
+NET_VENDOR_CISCO:
+/home/suh/template/linux-releases/linux-4.4/drivers/net/ethernet/cisco/Kconfig:5:config NET_VENDOR_CISCO
+/home/suh/template/linux-releases/linux-4.4/drivers/net/ethernet/cisco/Kconfig-6-	bool "Cisco devices"
+/home/suh/template/linux-releases/linux-4.4/drivers/net/ethernet/cisco/Kconfig-7-	default y
+ 
+NET_VENDOR_EMULEX:
+/home/suh/template/linux-releases/linux-4.4/drivers/net/ethernet/emulex/Kconfig:5:config NET_VENDOR_EMULEX
+/home/suh/template/linux-releases/linux-4.4/drivers/net/ethernet/emulex/Kconfig-6-	bool "Emulex devices"
+/home/suh/template/linux-releases/linux-4.4/drivers/net/ethernet/emulex/Kconfig-7-	default y
+ 
+NET_VENDOR_EZCHIP:
+/home/suh/template/linux-releases/linux-4.4/drivers/net/ethernet/ezchip/Kconfig:5:config NET_VENDOR_EZCHIP
+/home/suh/template/linux-releases/linux-4.4/drivers/net/ethernet/ezchip/Kconfig-6-	bool "EZchip devices"
+/home/suh/template/linux-releases/linux-4.4/drivers/net/ethernet/ezchip/Kconfig-7-	default y
+ 
+NET_VENDOR_MICROCHIP:
+/home/suh/template/linux-releases/linux-4.4/drivers/net/ethernet/microchip/Kconfig:5:config NET_VENDOR_MICROCHIP
+/home/suh/template/linux-releases/linux-4.4/drivers/net/ethernet/microchip/Kconfig-6-	bool "Microchip devices"
+/home/suh/template/linux-releases/linux-4.4/drivers/net/ethernet/microchip/Kconfig-7-	default y
+ 
+NET_VENDOR_QUALCOMM:
+/home/suh/template/linux-releases/linux-4.4/drivers/net/ethernet/qualcomm/Kconfig:5:config NET_VENDOR_QUALCOMM
+/home/suh/template/linux-releases/linux-4.4/drivers/net/ethernet/qualcomm/Kconfig-6-	bool "Qualcomm devices"
+/home/suh/template/linux-releases/linux-4.4/drivers/net/ethernet/qualcomm/Kconfig-7-	default y
+ 
+NET_VENDOR_RDC:
+/home/suh/template/linux-releases/linux-4.4/drivers/net/ethernet/rdc/Kconfig:5:config NET_VENDOR_RDC
+/home/suh/template/linux-releases/linux-4.4/drivers/net/ethernet/rdc/Kconfig-6-	bool "RDC devices"
+/home/suh/template/linux-releases/linux-4.4/drivers/net/ethernet/rdc/Kconfig-7-	default y
+ 
+NET_VENDOR_ROCKER:
+/home/suh/template/linux-releases/linux-4.4/drivers/net/ethernet/rocker/Kconfig:5:config NET_VENDOR_ROCKER
+/home/suh/template/linux-releases/linux-4.4/drivers/net/ethernet/rocker/Kconfig-6-	bool "Rocker devices"
+/home/suh/template/linux-releases/linux-4.4/drivers/net/ethernet/rocker/Kconfig-7-	default y
+ 
+NET_VENDOR_SILAN:
+/home/suh/template/linux-releases/linux-4.4/drivers/net/ethernet/silan/Kconfig:5:config NET_VENDOR_SILAN
+/home/suh/template/linux-releases/linux-4.4/drivers/net/ethernet/silan/Kconfig-6-	bool "Silan devices"
+/home/suh/template/linux-releases/linux-4.4/drivers/net/ethernet/silan/Kconfig-7-	default y
+ 
+NET_VENDOR_SYNOPSYS:
+/home/suh/template/linux-releases/linux-4.4/drivers/net/ethernet/synopsys/Kconfig:5:config NET_VENDOR_SYNOPSYS
+/home/suh/template/linux-releases/linux-4.4/drivers/net/ethernet/synopsys/Kconfig-6-	bool "Synopsys devices"
+/home/suh/template/linux-releases/linux-4.4/drivers/net/ethernet/synopsys/Kconfig-7-	default y
+ 
+NET_VENDOR_WIZNET:
+/home/suh/template/linux-releases/linux-4.4/drivers/net/ethernet/wiznet/Kconfig:5:config NET_VENDOR_WIZNET
+/home/suh/template/linux-releases/linux-4.4/drivers/net/ethernet/wiznet/Kconfig-6-	bool "WIZnet devices"
+/home/suh/template/linux-releases/linux-4.4/drivers/net/ethernet/wiznet/Kconfig-7-	depends on HAS_IOMEM
+ 
+PCI_LABEL:
+/home/suh/template/linux-releases/linux-4.4/drivers/pci/Kconfig:117:config PCI_LABEL
+/home/suh/template/linux-releases/linux-4.4/drivers/pci/Kconfig-118-	def_bool y if (DMI || ACPI)
+/home/suh/template/linux-releases/linux-4.4/drivers/pci/Kconfig-119-	select NLS
+ 
+PCI_REALLOC_ENABLE_AUTO:
+/home/suh/template/linux-releases/linux-4.4/drivers/pci/Kconfig:39:config PCI_REALLOC_ENABLE_AUTO
+/home/suh/template/linux-releases/linux-4.4/drivers/pci/Kconfig-40-	bool "Enable PCI resource re-allocation detection"
+/home/suh/template/linux-releases/linux-4.4/drivers/pci/Kconfig-41-	depends on PCI
+ 
+PCMCIA_PROBE:
+/home/suh/template/linux-releases/linux-4.4/drivers/pcmcia/Kconfig:231:config PCMCIA_PROBE
+/home/suh/template/linux-releases/linux-4.4/drivers/pcmcia/Kconfig-232-	bool
+/home/suh/template/linux-releases/linux-4.4/drivers/pcmcia/Kconfig-233-	default y if ISA && !ARCH_SA1100 && !PARISC
+ 
+PROC_CHILDREN:
+/home/suh/template/linux-releases/linux-4.4/fs/proc/Kconfig:75:config PROC_CHILDREN
+/home/suh/template/linux-releases/linux-4.4/fs/proc/Kconfig-76-	bool "Include /proc/<pid>/task/<tid>/children file"
+/home/suh/template/linux-releases/linux-4.4/fs/proc/Kconfig-77-	default n
+ 
+RADIO_SI470X:
+/home/suh/template/linux-releases/linux-4.4/drivers/media/radio/Kconfig:18:config RADIO_SI470X
+/home/suh/template/linux-releases/linux-4.4/drivers/media/radio/Kconfig-19-	bool "Silicon Labs Si470x FM Radio Receiver support"
+/home/suh/template/linux-releases/linux-4.4/drivers/media/radio/Kconfig-20-	depends on VIDEO_V4L2
+ 
+RAID_ATTRS:
+/home/suh/template/linux-releases/linux-4.4/drivers/scsi/Kconfig:8:config RAID_ATTRS
+/home/suh/template/linux-releases/linux-4.4/drivers/scsi/Kconfig-9-	tristate "RAID Transport Class"
+/home/suh/template/linux-releases/linux-4.4/drivers/scsi/Kconfig-10-	default n
+ 
+RAID_ATTRS_MODULE:
+ 
+RCU_TORTURE_TEST_SLOW_CLEANUP:
+/home/suh/template/linux-releases/linux-4.4/lib/Kconfig.debug:1325:config RCU_TORTURE_TEST_SLOW_CLEANUP
+/home/suh/template/linux-releases/linux-4.4/lib/Kconfig.debug-1326-	bool "Slow down RCU grace-period cleanup to expose races"
+/home/suh/template/linux-releases/linux-4.4/lib/Kconfig.debug-1327-	depends on RCU_TORTURE_TEST
+--
+/home/suh/template/linux-releases/linux-4.4/lib/Kconfig.debug:1340:config RCU_TORTURE_TEST_SLOW_CLEANUP_DELAY
+/home/suh/template/linux-releases/linux-4.4/lib/Kconfig.debug-1341-	int "How much to slow down RCU grace-period cleanup"
+/home/suh/template/linux-releases/linux-4.4/lib/Kconfig.debug-1342-	range 0 5
+ 
+RCU_TORTURE_TEST_SLOW_INIT:
+/home/suh/template/linux-releases/linux-4.4/lib/Kconfig.debug:1300:config RCU_TORTURE_TEST_SLOW_INIT
+/home/suh/template/linux-releases/linux-4.4/lib/Kconfig.debug-1301-	bool "Slow down RCU grace-period initialization to expose races"
+/home/suh/template/linux-releases/linux-4.4/lib/Kconfig.debug-1302-	depends on RCU_TORTURE_TEST
+--
+/home/suh/template/linux-releases/linux-4.4/lib/Kconfig.debug:1316:config RCU_TORTURE_TEST_SLOW_INIT_DELAY
+/home/suh/template/linux-releases/linux-4.4/lib/Kconfig.debug-1317-	int "How much to slow down RCU grace-period initialization"
+/home/suh/template/linux-releases/linux-4.4/lib/Kconfig.debug-1318-	range 0 5
+ 
+RCU_TORTURE_TEST_SLOW_PREINIT:
+/home/suh/template/linux-releases/linux-4.4/lib/Kconfig.debug:1274:config RCU_TORTURE_TEST_SLOW_PREINIT
+/home/suh/template/linux-releases/linux-4.4/lib/Kconfig.debug-1275-	bool "Slow down RCU grace-period pre-initialization to expose races"
+/home/suh/template/linux-releases/linux-4.4/lib/Kconfig.debug-1276-	depends on RCU_TORTURE_TEST
+--
+/home/suh/template/linux-releases/linux-4.4/lib/Kconfig.debug:1291:config RCU_TORTURE_TEST_SLOW_PREINIT_DELAY
+/home/suh/template/linux-releases/linux-4.4/lib/Kconfig.debug-1292-	int "How much to slow down RCU grace-period pre-initialization"
+/home/suh/template/linux-releases/linux-4.4/lib/Kconfig.debug-1293-	range 0 5
+ 
+RFKILL_REGULATOR:
+/home/suh/template/linux-releases/linux-4.4/net/rfkill/Kconfig:26:config RFKILL_REGULATOR
+/home/suh/template/linux-releases/linux-4.4/net/rfkill/Kconfig-27-	tristate "Generic rfkill regulator driver"
+/home/suh/template/linux-releases/linux-4.4/net/rfkill/Kconfig-28-	depends on RFKILL || !RFKILL
+ 
+RFKILL_REGULATOR_MODULE:
+ 
+RTLLIB_CRYPTO_CCMP_MODULE:
+ 
+RTLLIB_CRYPTO_WEP_MODULE:
+ 
+SND_SST_IPC_ACPI:
+/home/suh/template/linux-releases/linux-4.4/sound/soc/intel/Kconfig:24:config SND_SST_IPC_ACPI
+/home/suh/template/linux-releases/linux-4.4/sound/soc/intel/Kconfig-25-	tristate
+/home/suh/template/linux-releases/linux-4.4/sound/soc/intel/Kconfig-26-	select SND_SST_IPC
+ 
+SND_SST_IPC_ACPI_MODULE:
+ 
+SND_SUPPORT_OLD_API:
+/home/suh/template/linux-releases/linux-4.4/sound/core/Kconfig:189:config SND_SUPPORT_OLD_API
+/home/suh/template/linux-releases/linux-4.4/sound/core/Kconfig-190-	bool "Support old ALSA API"
+/home/suh/template/linux-releases/linux-4.4/sound/core/Kconfig-191-	default y
+ 
+STM_SOURCE_CONSOLE:
+/home/suh/template/linux-releases/linux-4.4/drivers/hwtracing/stm/Kconfig:19:config STM_SOURCE_CONSOLE
+/home/suh/template/linux-releases/linux-4.4/drivers/hwtracing/stm/Kconfig-20-	tristate "Kernel console over STM devices"
+/home/suh/template/linux-releases/linux-4.4/drivers/hwtracing/stm/Kconfig-21-	help
+ 
+STM_SOURCE_CONSOLE_MODULE:
+ 
+SYSCTL_EXCEPTION_TRACE:
+/home/suh/template/linux-releases/linux-4.4/init/Kconfig:1328:config SYSCTL_EXCEPTION_TRACE
+/home/suh/template/linux-releases/linux-4.4/init/Kconfig-1329-	bool
+/home/suh/template/linux-releases/linux-4.4/init/Kconfig-1330-	help
+ 
+TRACEPOINT_BENCHMARK:
+/home/suh/template/linux-releases/linux-4.4/kernel/trace/Kconfig:541:config TRACEPOINT_BENCHMARK
+/home/suh/template/linux-releases/linux-4.4/kernel/trace/Kconfig-542-        bool "Add tracepoint that benchmarks tracepoints"
+/home/suh/template/linux-releases/linux-4.4/kernel/trace/Kconfig-543-	help
+ 
+TRACER_SNAPSHOT:
+/home/suh/template/linux-releases/linux-4.4/kernel/trace/Kconfig:241:config TRACER_SNAPSHOT
+/home/suh/template/linux-releases/linux-4.4/kernel/trace/Kconfig-242-	bool "Create a snapshot trace buffer"
+/home/suh/template/linux-releases/linux-4.4/kernel/trace/Kconfig-243-	select TRACER_MAX_TRACE
+--
+/home/suh/template/linux-releases/linux-4.4/kernel/trace/Kconfig:251:config TRACER_SNAPSHOT_PER_CPU_SWAP
+/home/suh/template/linux-releases/linux-4.4/kernel/trace/Kconfig-252-        bool "Allow snapshot to swap per CPU"
+/home/suh/template/linux-releases/linux-4.4/kernel/trace/Kconfig-253-	depends on TRACER_SNAPSHOT
+ 
+TUN_VNET_CROSS_LE:
+/home/suh/template/linux-releases/linux-4.4/drivers/net/Kconfig:261:config TUN_VNET_CROSS_LE
+/home/suh/template/linux-releases/linux-4.4/drivers/net/Kconfig-262-	bool "Support for cross-endian vnet headers on little-endian kernels"
+/home/suh/template/linux-releases/linux-4.4/drivers/net/Kconfig-263-	default n
+ 
+USB_KBD:
+/home/suh/template/linux-releases/linux-4.4/drivers/hid/usbhid/Kconfig:50:config USB_KBD
+/home/suh/template/linux-releases/linux-4.4/drivers/hid/usbhid/Kconfig-51-	tristate "USB HIDBP Keyboard (simple Boot) support"
+/home/suh/template/linux-releases/linux-4.4/drivers/hid/usbhid/Kconfig-52-	depends on USB && INPUT
+ 
+USB_KBD_MODULE:
+ 
+USB_MOUSE:
+/home/suh/template/linux-releases/linux-4.4/drivers/hid/usbhid/Kconfig:66:config USB_MOUSE
+/home/suh/template/linux-releases/linux-4.4/drivers/hid/usbhid/Kconfig-67-	tristate "USB HIDBP Mouse (simple Boot) support"
+/home/suh/template/linux-releases/linux-4.4/drivers/hid/usbhid/Kconfig-68-	depends on USB && INPUT
+ 
+USB_MOUSE_MODULE:
+ 
+VIDEOBUF2_CORE:
+/home/suh/template/linux-releases/linux-4.4/drivers/media/v4l2-core/Kconfig:81:config VIDEOBUF2_CORE
+/home/suh/template/linux-releases/linux-4.4/drivers/media/v4l2-core/Kconfig-82-	select DMA_SHARED_BUFFER
+/home/suh/template/linux-releases/linux-4.4/drivers/media/v4l2-core/Kconfig-83-	tristate
+ 
+VIDEOBUF2_CORE_MODULE:
+ 
+VIDEOBUF2_MEMOPS:
+/home/suh/template/linux-releases/linux-4.4/drivers/media/v4l2-core/Kconfig:85:config VIDEOBUF2_MEMOPS
+/home/suh/template/linux-releases/linux-4.4/drivers/media/v4l2-core/Kconfig-86-	tristate
+/home/suh/template/linux-releases/linux-4.4/drivers/media/v4l2-core/Kconfig-87-	select FRAME_VECTOR
+ 
+VIDEOBUF2_MEMOPS_MODULE:
+ 
+VIDEO_FIXED_MINOR_RANGES:
+/home/suh/template/linux-releases/linux-4.4/drivers/media/v4l2-core/Kconfig:19:config VIDEO_FIXED_MINOR_RANGES
+/home/suh/template/linux-releases/linux-4.4/drivers/media/v4l2-core/Kconfig-20-	bool "Enable old-style fixed minor ranges on drivers/video devices"
+/home/suh/template/linux-releases/linux-4.4/drivers/media/v4l2-core/Kconfig-21-	default n
+ 
+VIDEO_SAMSUNG_S5P_TV:
+/home/suh/template/linux-releases/linux-4.4/drivers/media/platform/s5p-tv/Kconfig:9:config VIDEO_SAMSUNG_S5P_TV
+/home/suh/template/linux-releases/linux-4.4/drivers/media/platform/s5p-tv/Kconfig-10-	bool "Samsung TV driver for S5P platform"
+/home/suh/template/linux-releases/linux-4.4/drivers/media/platform/s5p-tv/Kconfig-11-	depends on PM
+ 
+W1_CON:
+/home/suh/template/linux-releases/linux-4.4/drivers/w1/Kconfig:15:config W1_CON
+/home/suh/template/linux-releases/linux-4.4/drivers/w1/Kconfig-16-	depends on CONNECTOR
+/home/suh/template/linux-releases/linux-4.4/drivers/w1/Kconfig-17-	bool "Userspace communication over connector"
+ 
+XEN_HAVE_VPMU:
+/home/suh/template/linux-releases/linux-4.4/drivers/xen/Kconfig:291:config XEN_HAVE_VPMU
+/home/suh/template/linux-releases/linux-4.4/drivers/xen/Kconfig-292-       bool
+/home/suh/template/linux-releases/linux-4.4/drivers/xen/Kconfig-293-

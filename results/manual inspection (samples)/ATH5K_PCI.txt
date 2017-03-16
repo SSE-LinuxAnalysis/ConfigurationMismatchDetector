@@ -1,0 +1,59 @@
+Problembeschreibung von Adam:
+    ATH5K_PCI should depend on ATH5K, not be selected by it
+
+\drivers\net\wireless\ath\ath5k\Kconfig:61:
+    config ATH5K_PCI
+        bool "Atheros 5xxx PCI bus support"
+        depends on (!ATH25 && PCI)
+        ---help---
+          This adds support for PCI type chipsets of the 5xxx Atheros
+          family.
+\drivers\net\wireless\ath\ath5k\Kconfig:1:         
+    config ATH5K
+        tristate "Atheros 5xxx wireless cards support"
+        depends on (PCI || ATH25) && MAC80211
+        select ATH_COMMON
+        select MAC80211_LEDS
+        select LEDS_CLASS
+        select NEW_LEDS
+        select ATH5K_AHB if ATH25
+        select ATH5K_PCI if !ATH25
+        ---help---
+          This module adds support for wireless adapters based on
+          Atheros 5xxx chipset.
+
+          Currently the following chip versions are supported:
+
+          MAC: AR5211 AR5212
+          PHY: RF5111/2111 RF5112/2112 RF5413/2413
+
+          This driver uses the kernel's mac80211 subsystem.
+
+          If you choose to build a module, it'll be called ath5k. Say M if
+          unsure.
+
+\drivers\net\wireless\ath\ath5k\Makefile:21:
+    ath5k-$(CONFIG_ATH5K_PCI)	+= pci.o
+    obj-$(CONFIG_ATH5K)		+= ath5k.o
+\drivers\net\wireless\ath\Makefile:1:
+    obj-$(CONFIG_ATH5K)		+= ath5k/
+
+Redundante Konfiguration:
+ATH5K=y && ATH25=n -> * ATH5K_PCI kann ohne Auswirkungen
+                        beliebig gesetzt werden, entsprechende Komponente wird
+                        nicht kompiliert (da wir nicht in den Ordner absteigen).
+                      * Konnte ATH25 nirgends finden, dürfte somit immer
+                        deaktiviert sein
+
+Problem:
+  * Selektierende Variable muss ausgewählt werden, damit Komponente überhaupt
+    erst berücksichtigt werden kann.
+  * Ich sehe keine Möglichkeit wie konfigurierbare Variable ATH5K_PCI verändert
+    werden kann UND dabei beim Kompilieren berücksichtigt werden kann: Entweder
+    ATH5K=m/y, dann wird ATH5K_PCI=y gesetzt und kann nicht verändert werden,
+    oder ATH5K=n dann kann ATH5K_PCI zwar selektiert werden, hat aber keine
+    Auswirkungen
+  * depends on mit default (+ evtl. ohne prompt?) wäre hier wohl sinnvoller
+  * Mögliche Ursachen:
+    * Durch select sollte evtl. ein Defaultwert vorgegeben werden und es wurde
+      übersehen, dass so die Variable unveränderlich ist

@@ -1,0 +1,57 @@
+Problembeschreibung von Adam:
+    In ACCESSIBILITY (die meisten anderen KAtegorien haben keine Erklärung):
+    "category" even has only 1 element
+   
+\drivers\net\ethernet\cisco\Kconfig:5:
+    config NET_VENDOR_CISCO
+        bool "Cisco devices"
+        default y
+        depends on PCI
+        ---help---
+          If you have a network (Ethernet) card belonging to this class, say Y.
+
+          Note that the answer to this question doesn't directly affect the
+          kernel: saying N will just cause the configurator to skip all
+          the questions about Cisco cards. If you say Y, you will be asked for
+          your specific card in the following questions.
+
+    if NET_VENDOR_CISCO
+
+    source "drivers/net/ethernet/cisco/enic/Kconfig"
+
+    endif # NET_VENDOR_CISCO
+\drivers\net\ethernet\cisco\Kconfig\enic:5:
+    config ENIC
+        tristate "Cisco VIC Ethernet NIC Support"
+        depends on PCI
+        ---help---
+          This enables the support for the Cisco VIC Ethernet card.
+    
+\drivers\net\ethernet\Makefile:27:
+    obj-$(CONFIG_NET_VENDOR_CISCO) += cisco/
+\drivers\net\ethernet\cisco\Makefile:5:
+    obj-$(CONFIG_ENIC) += enic/
+\drivers\net\ethernet\cisco\enic\Makefile:1:    
+    obj-$(CONFIG_ENIC) := enic.o
+
+    enic-y := enic_main.o vnic_cq.o vnic_intr.o vnic_wq.o \
+        enic_res.o enic_dev.o enic_pp.o vnic_dev.o vnic_rq.o vnic_vic.o \
+        enic_ethtool.o enic_api.o enic_clsf.o
+    
+Redundante Konfiguration:
+    Aktivierung von NET_VENDOR_CISCO führt zu nächst zu keiner Änderung, es wird 
+    die eigentlich relevante Variable ENIC konfigurierbar gemacht.
+    Folgende Konfigurationen führen zum selben Ergebnis:
+    * NET_VENDOR_CISCO=n
+    * NET_VENDOR_CISCO=y && ENIC=n
+                  
+Problem:
+  * Es handelt sich hierbei um ein Submenü für einen Hersteller, was der Name
+    ja schon andeutet. Wenn dieses Submenü aktiv ist, muss nicht zwangsläufig ein
+    Element ausgewählt werden. Zudem enthält das Menü (aktuell) nur ein Element,
+    ist aber prinzipiell erweiterbar.
+    Meiner Meinung nach existiert nicht wirklich eine sinnvolle Alternative wie
+    man das sauber modellieren könnte. Bestenfalls könnte man den VENDOR Teil
+    als MENU erstellen, dann wären die Abhängigen Variablen immer sichtbar und
+    immer selektierbar.
+ 

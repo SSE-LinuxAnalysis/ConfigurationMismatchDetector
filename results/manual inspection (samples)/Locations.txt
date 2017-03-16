@@ -1,0 +1,889 @@
+Erklärung:
+ * (Kbuild): Nur Vorkommnisse in Makefiles (+Configs, Doku, ...)              : 34 Funde :                           45 Funde
+ * (C-Code): Nur Vorkommnisse in C-Files (+Configs, Doku, ...)                : 32 Funde :                           32 Funde
+ * (Kein Fund, X): Keine Funde (kommt nur für _Module vor, war zu erwarten)   : 14 Funde (11 davon Kbuild, 3 unklar): 3 Funde 
+ * Gesamt                                                                     : 80 Funde
+ * Manuelle Suche durchgeführt von Sascha auf Linux 4.4 am 3.3.2017
+ 
+CONFIG_ACCESSIBILITY (Kbuild):
+/home/suh/template/linux-releases/linux-4.4/drivers/Makefile:115:obj-$(CONFIG_ACCESSIBILITY)	+= accessibility/
+/home/suh/template/linux-releases/linux-4.4/arch/xtensa/configs/iss_defconfig:489:# CONFIG_ACCESSIBILITY is not set
+/home/suh/template/linux-releases/linux-4.4/arch/powerpc/configs/ppc6xx_defconfig:997:CONFIG_ACCESSIBILITY=y
+ 
+CONFIG_ACPI_APEI_MEMORY_FAILURE (C-Code):
+/home/suh/template/linux-releases/linux-4.4/drivers/acpi/apei/ghes.c:393:#ifdef CONFIG_ACPI_APEI_MEMORY_FAILURE
+ 
+CONFIG_APM_DISPLAY_BLANK (C-Code):
+/home/suh/template/linux-releases/linux-4.4/arch/x86/kernel/apm_32.c:243:#if defined(CONFIG_APM_DISPLAY_BLANK) && defined(CONFIG_VT)
+/home/suh/template/linux-releases/linux-4.4/arch/x86/kernel/apm_32.c:1115:#if defined(CONFIG_APM_DISPLAY_BLANK) && defined(CONFIG_VT)
+/home/suh/template/linux-releases/linux-4.4/arch/x86/kernel/apm_32.c:1853:#if defined(CONFIG_APM_DISPLAY_BLANK) && defined(CONFIG_VT)
+/home/suh/template/linux-releases/linux-4.4/arch/x86/kernel/apm_32.c:1857:#if defined(CONFIG_APM_DISPLAY_BLANK) && defined(CONFIG_VT)
+ 
+CONFIG_ARCH_HAS_ATOMIC64_DEC_IF_POSITIVE (C-Code):
+/home/suh/template/linux-releases/linux-4.4/lib/atomic64_test.c:140:#ifdef CONFIG_ARCH_HAS_ATOMIC64_DEC_IF_POSITIVE
+ 
+CONFIG_ARCH_WANT_GENERAL_HUGETLB (C-Code):
+/home/suh/template/linux-releases/linux-4.4/mm/hugetlb.c:4279:#ifdef CONFIG_ARCH_WANT_GENERAL_HUGETLB
+/home/suh/template/linux-releases/linux-4.4/mm/hugetlb.c:4323:#endif /* CONFIG_ARCH_WANT_GENERAL_HUGETLB */
+ 
+CONFIG_ARCH_WANT_OLD_COMPAT_IPC (C-Code):
+/home/suh/template/linux-releases/linux-4.4/ipc/compat.c:328:#ifdef CONFIG_ARCH_WANT_OLD_COMPAT_IPC
+ 
+CONFIG_ATH5K_PCI (Kbuild):
+/home/suh/template/linux-releases/linux-4.4/drivers/net/wireless/ath/ath5k/Makefile:21:ath5k-$(CONFIG_ATH5K_PCI)	+= pci.o
+ 
+CONFIG_BLK_DEV_IDE_SATA (C-Code):
+/home/suh/template/linux-releases/linux-4.4/drivers/ide/siimage.c:56:#ifdef CONFIG_BLK_DEV_IDE_SATA
+/home/suh/template/linux-releases/linux-4.4/drivers/ide/siimage.c:812:#ifdef CONFIG_BLK_DEV_IDE_SATA
+/home/suh/template/linux-releases/linux-4.4/drivers/ide/ide-pci-generic.c:162:#ifdef CONFIG_BLK_DEV_IDE_SATA
+/home/suh/template/linux-releases/linux-4.4/drivers/ide/piix.c:438:#ifdef CONFIG_BLK_DEV_IDE_SATA
+/home/suh/template/linux-releases/linux-4.4/drivers/ide/amd74xx.c:300:#ifdef CONFIG_BLK_DEV_IDE_SATA
+/home/suh/template/linux-releases/linux-4.4/drivers/ide/amd74xx.c:305:#ifdef CONFIG_BLK_DEV_IDE_SATA
+ 
+CONFIG_CHROME_PLATFORMS (Kbuild):
+/home/suh/template/linux-releases/linux-4.4/drivers/platform/Makefile:9:obj-$(CONFIG_CHROME_PLATFORMS)	+= chrome/
+/home/suh/template/linux-releases/linux-4.4/arch/arm/configs/exynos_defconfig:190:CONFIG_CHROME_PLATFORMS=y
+/home/suh/template/linux-releases/linux-4.4/arch/arm/configs/multi_v7_defconfig:660:CONFIG_CHROME_PLATFORMS=y
+ 
+CONFIG_CRYPTO_DEV_CCP (Kbuild):
+/home/suh/template/linux-releases/linux-4.4/drivers/crypto/ccp/Makefile:1:obj-$(CONFIG_CRYPTO_DEV_CCP_DD) += ccp.o
+/home/suh/template/linux-releases/linux-4.4/drivers/crypto/ccp/Makefile:5:obj-$(CONFIG_CRYPTO_DEV_CCP_CRYPTO) += ccp-crypto.o
+/home/suh/template/linux-releases/linux-4.4/drivers/crypto/Makefile:5:obj-$(CONFIG_CRYPTO_DEV_CCP) += ccp/
+/home/suh/template/linux-releases/linux-4.4/include/linux/ccp.h:26:#if defined(CONFIG_CRYPTO_DEV_CCP_DD) || \
+/home/suh/template/linux-releases/linux-4.4/include/linux/ccp.h:27:	defined(CONFIG_CRYPTO_DEV_CCP_DD_MODULE)
+/home/suh/template/linux-releases/linux-4.4/include/linux/ccp.h:61:#else /* CONFIG_CRYPTO_DEV_CCP_DD is not enabled */
+/home/suh/template/linux-releases/linux-4.4/include/linux/ccp.h:73:#endif /* CONFIG_CRYPTO_DEV_CCP_DD */
+ 
+CONFIG_DEBUG_BLK_CGROUP (C-Code):
+/home/suh/template/linux-releases/linux-4.4/Documentation/cgroups/blkio-controller.txt:130:CONFIG_DEBUG_BLK_CGROUP
+/home/suh/template/linux-releases/linux-4.4/Documentation/cgroups/blkio-controller.txt:250:	- Debugging aid only enabled if CONFIG_DEBUG_BLK_CGROUP=y.
+/home/suh/template/linux-releases/linux-4.4/Documentation/cgroups/blkio-controller.txt:256:	- Debugging aid only enabled if CONFIG_DEBUG_BLK_CGROUP=y.
+/home/suh/template/linux-releases/linux-4.4/Documentation/cgroups/blkio-controller.txt:267:	- Debugging aid only enabled if CONFIG_DEBUG_BLK_CGROUP=y.
+/home/suh/template/linux-releases/linux-4.4/Documentation/cgroups/blkio-controller.txt:276:	- Debugging aid only enabled if CONFIG_DEBUG_BLK_CGROUP=y.
+/home/suh/template/linux-releases/linux-4.4/Documentation/cgroups/blkio-controller.txt:285:	- Debugging aid only enabled if CONFIG_DEBUG_BLK_CGROUP=y. This
+/home/suh/template/linux-releases/linux-4.4/block/cfq-iosched.c:190:#ifdef CONFIG_DEBUG_BLK_CGROUP
+/home/suh/template/linux-releases/linux-4.4/block/cfq-iosched.c:210:#endif	/* CONFIG_DEBUG_BLK_CGROUP */
+/home/suh/template/linux-releases/linux-4.4/block/cfq-iosched.c:456:#if defined(CONFIG_CFQ_GROUP_IOSCHED) && defined(CONFIG_DEBUG_BLK_CGROUP)
+/home/suh/template/linux-releases/linux-4.4/block/cfq-iosched.c:586:#else	/* CONFIG_CFQ_GROUP_IOSCHED && CONFIG_DEBUG_BLK_CGROUP */
+/home/suh/template/linux-releases/linux-4.4/block/cfq-iosched.c:596:#endif	/* CONFIG_CFQ_GROUP_IOSCHED && CONFIG_DEBUG_BLK_CGROUP */
+/home/suh/template/linux-releases/linux-4.4/block/cfq-iosched.c:674:#ifdef CONFIG_DEBUG_BLK_CGROUP
+/home/suh/template/linux-releases/linux-4.4/block/cfq-iosched.c:710:#ifdef CONFIG_DEBUG_BLK_CGROUP
+/home/suh/template/linux-releases/linux-4.4/block/cfq-iosched.c:729:#ifdef CONFIG_DEBUG_BLK_CGROUP
+/home/suh/template/linux-releases/linux-4.4/block/cfq-iosched.c:1535:#ifdef CONFIG_DEBUG_BLK_CGROUP
+/home/suh/template/linux-releases/linux-4.4/block/cfq-iosched.c:1555:#ifdef CONFIG_DEBUG_BLK_CGROUP
+/home/suh/template/linux-releases/linux-4.4/block/cfq-iosched.c:1958:#ifdef CONFIG_DEBUG_BLK_CGROUP
+/home/suh/template/linux-releases/linux-4.4/block/cfq-iosched.c:1982:#endif	/* CONFIG_DEBUG_BLK_CGROUP */
+/home/suh/template/linux-releases/linux-4.4/block/cfq-iosched.c:2105:#ifdef CONFIG_DEBUG_BLK_CGROUP
+/home/suh/template/linux-releases/linux-4.4/block/cfq-iosched.c:2135:#endif	/* CONFIG_DEBUG_BLK_CGROUP */
+ 
+CONFIG_DEBUG_OBJECTS_PERCPU_COUNTER (C-Code):
+/home/suh/template/linux-releases/linux-4.4/lib/percpu_counter.c:18:#ifdef CONFIG_DEBUG_OBJECTS_PERCPU_COUNTER
+/home/suh/template/linux-releases/linux-4.4/lib/percpu_counter.c:53:#else	/* CONFIG_DEBUG_OBJECTS_PERCPU_COUNTER */
+/home/suh/template/linux-releases/linux-4.4/lib/percpu_counter.c:58:#endif	/* CONFIG_DEBUG_OBJECTS_PERCPU_COUNTER */
+/home/suh/template/linux-releases/linux-4.4/arch/s390/configs/default_defconfig:557:CONFIG_DEBUG_OBJECTS_PERCPU_COUNTER=y
+ 
+CONFIG_DPM_WATCHDOG (C-Code):
+/home/suh/template/linux-releases/linux-4.4/drivers/base/power/main.c:398:#ifdef CONFIG_DPM_WATCHDOG
+/home/suh/template/linux-releases/linux-4.4/drivers/base/power/main.c:440:	timer->expires = jiffies + HZ * CONFIG_DPM_WATCHDOG_TIMEOUT;
+ 
+CONFIG_DVB_AU8522_V4L (Kbuild):
+/home/suh/template/linux-releases/linux-4.4/drivers/media/dvb-frontends/Makefile:75:obj-$(CONFIG_DVB_AU8522_V4L) += au8522_decoder.o
+ 
+CONFIG_DVB_AU8522_V4L_MODULE (Kein FUND, Kbuild):
+ 
+CONFIG_EDAC_ATOMIC_SCRUB (C-Code):
+/home/suh/template/linux-releases/linux-4.4/drivers/edac/edac_mc.c:37:#ifdef CONFIG_EDAC_ATOMIC_SCRUB
+ 
+CONFIG_EDAC_LEGACY_SYSFS (C-Code):
+/home/suh/template/linux-releases/linux-4.4/drivers/edac/edac_mc_sysfs.c:140:#ifdef CONFIG_EDAC_LEGACY_SYSFS
+/home/suh/template/linux-releases/linux-4.4/drivers/edac/edac_mc_sysfs.c:944:#ifdef CONFIG_EDAC_LEGACY_SYSFS
+/home/suh/template/linux-releases/linux-4.4/drivers/edac/edac_mc_sysfs.c:981:#ifdef CONFIG_EDAC_LEGACY_SYSFS
+/home/suh/template/linux-releases/linux-4.4/Documentation/edac.txt:211:When CONFIG_EDAC_LEGACY_SYSFS is enabled, sysfs will contain the csrowX
+ 
+CONFIG_EXPERT (C-Code):
+/home/suh/template/linux-releases/linux-4.4/drivers/gpu/drm/drm_fb_helper.c:2178:#if defined(CONFIG_FRAMEBUFFER_CONSOLE_MODULE) && !defined(CONFIG_EXPERT)
+/home/suh/template/linux-releases/linux-4.4/arch/frv/defconfig:6:CONFIG_EXPERT=y
+/home/suh/template/linux-releases/linux-4.4/arch/cris/configs/artpec_3_defconfig:5:CONFIG_EXPERT=y
+/home/suh/template/linux-releases/linux-4.4/arch/cris/configs/etrax-100lx_v2_defconfig:5:CONFIG_EXPERT=y
+/home/suh/template/linux-releases/linux-4.4/arch/cris/configs/etraxfs_defconfig:5:CONFIG_EXPERT=y
+/home/suh/template/linux-releases/linux-4.4/arch/parisc/configs/a500_defconfig:11:CONFIG_EXPERT=y
+/home/suh/template/linux-releases/linux-4.4/arch/parisc/configs/c8000_defconfig:14:CONFIG_EXPERT=y
+/home/suh/template/linux-releases/linux-4.4/arch/parisc/configs/c3000_defconfig:10:CONFIG_EXPERT=y
+/home/suh/template/linux-releases/linux-4.4/arch/parisc/configs/generic-32bit_defconfig:14:CONFIG_EXPERT=y
+/home/suh/template/linux-releases/linux-4.4/arch/mn10300/configs/asb2303_defconfig:7:CONFIG_EXPERT=y
+/home/suh/template/linux-releases/linux-4.4/arch/mn10300/configs/asb2364_defconfig:17:CONFIG_EXPERT=y
+/home/suh/template/linux-releases/linux-4.4/arch/m68k/configs/m5272c3_defconfig:2:CONFIG_EXPERT=y
+/home/suh/template/linux-releases/linux-4.4/arch/m68k/configs/m5208evb_defconfig:2:CONFIG_EXPERT=y
+/home/suh/template/linux-releases/linux-4.4/arch/m68k/configs/m5275evb_defconfig:2:CONFIG_EXPERT=y
+/home/suh/template/linux-releases/linux-4.4/arch/m68k/configs/m5249evb_defconfig:2:CONFIG_EXPERT=y
+/home/suh/template/linux-releases/linux-4.4/arch/m68k/configs/m5307c3_defconfig:2:CONFIG_EXPERT=y
+/home/suh/template/linux-releases/linux-4.4/arch/m68k/configs/m5407c3_defconfig:2:CONFIG_EXPERT=y
+/home/suh/template/linux-releases/linux-4.4/arch/xtensa/configs/smp_lx200_defconfig:20:CONFIG_EXPERT=y
+/home/suh/template/linux-releases/linux-4.4/arch/xtensa/configs/nommu_kc705_defconfig:24:CONFIG_EXPERT=y
+/home/suh/template/linux-releases/linux-4.4/arch/xtensa/configs/common_defconfig:34:# CONFIG_EXPERT is not set
+/home/suh/template/linux-releases/linux-4.4/arch/xtensa/configs/audio_kc705_defconfig:19:CONFIG_EXPERT=y
+/home/suh/template/linux-releases/linux-4.4/arch/xtensa/configs/generic_kc705_defconfig:20:CONFIG_EXPERT=y
+/home/suh/template/linux-releases/linux-4.4/arch/xtensa/configs/iss_defconfig:55:CONFIG_EXPERT=y
+/home/suh/template/linux-releases/linux-4.4/arch/s390/defconfig:23:CONFIG_EXPERT=y
+/home/suh/template/linux-releases/linux-4.4/arch/s390/configs/gcov_defconfig:26:CONFIG_EXPERT=y
+/home/suh/template/linux-releases/linux-4.4/arch/s390/configs/performance_defconfig:27:CONFIG_EXPERT=y
+/home/suh/template/linux-releases/linux-4.4/arch/s390/configs/default_defconfig:28:CONFIG_EXPERT=y
+/home/suh/template/linux-releases/linux-4.4/arch/mips/configs/cobalt_defconfig:7:CONFIG_EXPERT=y
+/home/suh/template/linux-releases/linux-4.4/arch/mips/configs/bmips_stb_defconfig:13:CONFIG_EXPERT=y
+/home/suh/template/linux-releases/linux-4.4/arch/mips/configs/bcm63xx_defconfig:13:CONFIG_EXPERT=y
+/home/suh/template/linux-releases/linux-4.4/arch/mips/configs/malta_kvm_defconfig:14:CONFIG_EXPERT=y
+/home/suh/template/linux-releases/linux-4.4/arch/mips/configs/rbtx49xx_defconfig:15:CONFIG_EXPERT=y
+/home/suh/template/linux-releases/linux-4.4/arch/mips/configs/lasat_defconfig:11:CONFIG_EXPERT=y
+/home/suh/template/linux-releases/linux-4.4/arch/mips/configs/tb0287_defconfig:7:CONFIG_EXPERT=y
+/home/suh/template/linux-releases/linux-4.4/arch/mips/configs/malta_defconfig:14:CONFIG_EXPERT=y
+/home/suh/template/linux-releases/linux-4.4/arch/mips/configs/ls1b_defconfig:17:CONFIG_EXPERT=y
+/home/suh/template/linux-releases/linux-4.4/arch/mips/configs/mtx1_defconfig:14:CONFIG_EXPERT=y
+/home/suh/template/linux-releases/linux-4.4/arch/mips/configs/e55_defconfig:7:CONFIG_EXPERT=y
+/home/suh/template/linux-releases/linux-4.4/arch/mips/configs/rm200_defconfig:15:CONFIG_EXPERT=y
+/home/suh/template/linux-releases/linux-4.4/arch/mips/configs/ar7_defconfig:17:CONFIG_EXPERT=y
+/home/suh/template/linux-releases/linux-4.4/arch/mips/configs/maltaup_xpa_defconfig:16:CONFIG_EXPERT=y
+/home/suh/template/linux-releases/linux-4.4/arch/mips/configs/bigsur_defconfig:29:CONFIG_EXPERT=y
+/home/suh/template/linux-releases/linux-4.4/arch/mips/configs/pnx8335_stb225_defconfig:14:CONFIG_EXPERT=y
+/home/suh/template/linux-releases/linux-4.4/arch/mips/configs/fuloong2e_defconfig:20:CONFIG_EXPERT=y
+/home/suh/template/linux-releases/linux-4.4/arch/mips/configs/ip27_defconfig:18:CONFIG_EXPERT=y
+/home/suh/template/linux-releases/linux-4.4/arch/mips/configs/jazz_defconfig:13:CONFIG_EXPERT=y
+/home/suh/template/linux-releases/linux-4.4/arch/mips/configs/decstation_defconfig:7:CONFIG_EXPERT=y
+/home/suh/template/linux-releases/linux-4.4/arch/mips/configs/ip22_defconfig:20:CONFIG_EXPERT=y
+/home/suh/template/linux-releases/linux-4.4/arch/mips/configs/malta_kvm_guest_defconfig:14:CONFIG_EXPERT=y
+/home/suh/template/linux-releases/linux-4.4/arch/mips/configs/sb1250_swarm_defconfig:18:CONFIG_EXPERT=y
+/home/suh/template/linux-releases/linux-4.4/arch/mips/configs/gpr_defconfig:14:CONFIG_EXPERT=y
+/home/suh/template/linux-releases/linux-4.4/arch/mips/configs/msp71xx_defconfig:11:CONFIG_EXPERT=y
+/home/suh/template/linux-releases/linux-4.4/arch/mips/configs/rb532_defconfig:16:CONFIG_EXPERT=y
+/home/suh/template/linux-releases/linux-4.4/arch/mips/configs/ip28_defconfig:11:CONFIG_EXPERT=y
+/home/suh/template/linux-releases/linux-4.4/arch/mips/configs/workpad_defconfig:7:CONFIG_EXPERT=y
+/home/suh/template/linux-releases/linux-4.4/arch/mips/configs/mpc30x_defconfig:8:CONFIG_EXPERT=y
+/home/suh/template/linux-releases/linux-4.4/arch/mips/configs/tb0226_defconfig:8:CONFIG_EXPERT=y
+/home/suh/template/linux-releases/linux-4.4/arch/mips/configs/nlm_xlr_defconfig:29:CONFIG_EXPERT=y
+/home/suh/template/linux-releases/linux-4.4/arch/mips/configs/markeins_defconfig:12:CONFIG_EXPERT=y
+/home/suh/template/linux-releases/linux-4.4/arch/mips/configs/lemote2f_defconfig:24:CONFIG_EXPERT=y
+/home/suh/template/linux-releases/linux-4.4/arch/mips/configs/jmr3927_defconfig:7:CONFIG_EXPERT=y
+/home/suh/template/linux-releases/linux-4.4/arch/mips/configs/mips_paravirt_defconfig:16:CONFIG_EXPERT=y
+/home/suh/template/linux-releases/linux-4.4/arch/mips/configs/cavium_octeon_defconfig:18:CONFIG_EXPERT=y
+/home/suh/template/linux-releases/linux-4.4/arch/mips/configs/bmips_be_defconfig:12:CONFIG_EXPERT=y
+/home/suh/template/linux-releases/linux-4.4/arch/mips/configs/capcella_defconfig:7:CONFIG_EXPERT=y
+/home/suh/template/linux-releases/linux-4.4/arch/mips/configs/tb0219_defconfig:8:CONFIG_EXPERT=y
+/home/suh/template/linux-releases/linux-4.4/arch/mips/configs/ip32_defconfig:13:CONFIG_EXPERT=y
+/home/suh/template/linux-releases/linux-4.4/arch/powerpc/configs/40x/obs600_defconfig:8:CONFIG_EXPERT=y
+/home/suh/template/linux-releases/linux-4.4/arch/powerpc/configs/40x/kilauea_defconfig:8:CONFIG_EXPERT=y
+/home/suh/template/linux-releases/linux-4.4/arch/powerpc/configs/40x/ep405_defconfig:6:CONFIG_EXPERT=y
+/home/suh/template/linux-releases/linux-4.4/arch/powerpc/configs/40x/walnut_defconfig:6:CONFIG_EXPERT=y
+/home/suh/template/linux-releases/linux-4.4/arch/powerpc/configs/40x/acadia_defconfig:6:CONFIG_EXPERT=y
+/home/suh/template/linux-releases/linux-4.4/arch/powerpc/configs/40x/makalu_defconfig:6:CONFIG_EXPERT=y
+/home/suh/template/linux-releases/linux-4.4/arch/powerpc/configs/44x/taishan_defconfig:6:CONFIG_EXPERT=y
+/home/suh/template/linux-releases/linux-4.4/arch/powerpc/configs/44x/arches_defconfig:8:CONFIG_EXPERT=y
+/home/suh/template/linux-releases/linux-4.4/arch/powerpc/configs/44x/ebony_defconfig:6:CONFIG_EXPERT=y
+/home/suh/template/linux-releases/linux-4.4/arch/powerpc/configs/44x/iss476-smp_defconfig:7:CONFIG_EXPERT=y
+/home/suh/template/linux-releases/linux-4.4/arch/powerpc/configs/44x/warp_defconfig:9:CONFIG_EXPERT=y
+/home/suh/template/linux-releases/linux-4.4/arch/powerpc/configs/44x/canyonlands_defconfig:8:CONFIG_EXPERT=y
+/home/suh/template/linux-releases/linux-4.4/arch/powerpc/configs/44x/icon_defconfig:6:CONFIG_EXPERT=y
+/home/suh/template/linux-releases/linux-4.4/arch/powerpc/configs/44x/eiger_defconfig:8:CONFIG_EXPERT=y
+/home/suh/template/linux-releases/linux-4.4/arch/powerpc/configs/44x/bluestone_defconfig:8:CONFIG_EXPERT=y
+/home/suh/template/linux-releases/linux-4.4/arch/powerpc/configs/44x/bamboo_defconfig:6:CONFIG_EXPERT=y
+/home/suh/template/linux-releases/linux-4.4/arch/powerpc/configs/44x/sam440ep_defconfig:7:CONFIG_EXPERT=y
+/home/suh/template/linux-releases/linux-4.4/arch/powerpc/configs/44x/rainier_defconfig:6:CONFIG_EXPERT=y
+/home/suh/template/linux-releases/linux-4.4/arch/powerpc/configs/44x/sequoia_defconfig:8:CONFIG_EXPERT=y
+/home/suh/template/linux-releases/linux-4.4/arch/powerpc/configs/44x/redwood_defconfig:8:CONFIG_EXPERT=y
+/home/suh/template/linux-releases/linux-4.4/arch/powerpc/configs/44x/akebono_defconfig:7:CONFIG_EXPERT=y
+/home/suh/template/linux-releases/linux-4.4/arch/powerpc/configs/44x/katmai_defconfig:6:CONFIG_EXPERT=y
+/home/suh/template/linux-releases/linux-4.4/arch/powerpc/configs/44x/currituck_defconfig:6:CONFIG_EXPERT=y
+/home/suh/template/linux-releases/linux-4.4/arch/powerpc/configs/mpc86xx_defconfig:13:CONFIG_EXPERT=y
+/home/suh/template/linux-releases/linux-4.4/arch/powerpc/configs/tqm8xx_defconfig:7:CONFIG_EXPERT=y
+/home/suh/template/linux-releases/linux-4.4/arch/powerpc/configs/pq2fads_defconfig:8:CONFIG_EXPERT=y
+/home/suh/template/linux-releases/linux-4.4/arch/powerpc/configs/mpc866_ads_defconfig:7:CONFIG_EXPERT=y
+/home/suh/template/linux-releases/linux-4.4/arch/powerpc/configs/mpc885_ads_defconfig:7:CONFIG_EXPERT=y
+/home/suh/template/linux-releases/linux-4.4/arch/powerpc/configs/85xx/sbc8548_defconfig:5:CONFIG_EXPERT=y
+/home/suh/template/linux-releases/linux-4.4/arch/powerpc/configs/85xx/tqm8548_defconfig:7:CONFIG_EXPERT=y
+/home/suh/template/linux-releases/linux-4.4/arch/powerpc/configs/85xx/stx_gp3_defconfig:5:CONFIG_EXPERT=y
+/home/suh/template/linux-releases/linux-4.4/arch/powerpc/configs/85xx/ksi8560_defconfig:5:CONFIG_EXPERT=y
+/home/suh/template/linux-releases/linux-4.4/arch/powerpc/configs/85xx/xes_mpc85xx_defconfig:12:CONFIG_EXPERT=y
+/home/suh/template/linux-releases/linux-4.4/arch/powerpc/configs/85xx/mpc85xx_cds_defconfig:7:CONFIG_EXPERT=y
+/home/suh/template/linux-releases/linux-4.4/arch/powerpc/configs/85xx/tqm8555_defconfig:5:CONFIG_EXPERT=y
+/home/suh/template/linux-releases/linux-4.4/arch/powerpc/configs/85xx/mpc8560_ads_defconfig:5:CONFIG_EXPERT=y
+/home/suh/template/linux-releases/linux-4.4/arch/powerpc/configs/85xx/tqm8540_defconfig:5:CONFIG_EXPERT=y
+/home/suh/template/linux-releases/linux-4.4/arch/powerpc/configs/85xx/tqm8541_defconfig:5:CONFIG_EXPERT=y
+/home/suh/template/linux-releases/linux-4.4/arch/powerpc/configs/85xx/socrates_defconfig:5:CONFIG_EXPERT=y
+/home/suh/template/linux-releases/linux-4.4/arch/powerpc/configs/85xx/tqm8560_defconfig:5:CONFIG_EXPERT=y
+/home/suh/template/linux-releases/linux-4.4/arch/powerpc/configs/85xx/mpc8540_ads_defconfig:7:CONFIG_EXPERT=y
+/home/suh/template/linux-releases/linux-4.4/arch/powerpc/configs/ep8248e_defconfig:5:CONFIG_EXPERT=y
+/home/suh/template/linux-releases/linux-4.4/arch/powerpc/configs/adder875_defconfig:5:CONFIG_EXPERT=y
+/home/suh/template/linux-releases/linux-4.4/arch/powerpc/configs/storcenter_defconfig:3:CONFIG_EXPERT=y
+/home/suh/template/linux-releases/linux-4.4/arch/powerpc/configs/52xx/motionpro_defconfig:4:CONFIG_EXPERT=y
+/home/suh/template/linux-releases/linux-4.4/arch/powerpc/configs/52xx/lite5200b_defconfig:6:CONFIG_EXPERT=y
+/home/suh/template/linux-releases/linux-4.4/arch/powerpc/configs/52xx/cm5200_defconfig:4:CONFIG_EXPERT=y
+/home/suh/template/linux-releases/linux-4.4/arch/powerpc/configs/52xx/pcm030_defconfig:11:CONFIG_EXPERT=y
+/home/suh/template/linux-releases/linux-4.4/arch/powerpc/configs/wii_defconfig:8:CONFIG_EXPERT=y
+/home/suh/template/linux-releases/linux-4.4/arch/powerpc/configs/fsl-emb-nonhw.config:34:CONFIG_EXPERT=y
+/home/suh/template/linux-releases/linux-4.4/arch/powerpc/configs/83xx/sbc834x_defconfig:4:CONFIG_EXPERT=y
+/home/suh/template/linux-releases/linux-4.4/arch/powerpc/configs/83xx/mpc834x_mds_defconfig:6:CONFIG_EXPERT=y
+/home/suh/template/linux-releases/linux-4.4/arch/powerpc/configs/83xx/mpc836x_mds_defconfig:6:CONFIG_EXPERT=y
+/home/suh/template/linux-releases/linux-4.4/arch/powerpc/configs/83xx/mpc837x_mds_defconfig:4:CONFIG_EXPERT=y
+/home/suh/template/linux-releases/linux-4.4/arch/powerpc/configs/83xx/mpc832x_rdb_defconfig:6:CONFIG_EXPERT=y
+/home/suh/template/linux-releases/linux-4.4/arch/powerpc/configs/83xx/mpc832x_mds_defconfig:6:CONFIG_EXPERT=y
+/home/suh/template/linux-releases/linux-4.4/arch/powerpc/configs/83xx/mpc836x_rdk_defconfig:4:CONFIG_EXPERT=y
+/home/suh/template/linux-releases/linux-4.4/arch/powerpc/configs/83xx/mpc834x_itxgp_defconfig:6:CONFIG_EXPERT=y
+/home/suh/template/linux-releases/linux-4.4/arch/powerpc/configs/83xx/mpc8313_rdb_defconfig:6:CONFIG_EXPERT=y
+/home/suh/template/linux-releases/linux-4.4/arch/powerpc/configs/83xx/mpc837x_rdb_defconfig:4:CONFIG_EXPERT=y
+/home/suh/template/linux-releases/linux-4.4/arch/powerpc/configs/83xx/mpc8315_rdb_defconfig:6:CONFIG_EXPERT=y
+/home/suh/template/linux-releases/linux-4.4/arch/powerpc/configs/83xx/kmeter1_defconfig:7:CONFIG_EXPERT=y
+/home/suh/template/linux-releases/linux-4.4/arch/powerpc/configs/83xx/mpc834x_itx_defconfig:6:CONFIG_EXPERT=y
+/home/suh/template/linux-releases/linux-4.4/arch/powerpc/configs/83xx/asp8347_defconfig:7:CONFIG_EXPERT=y
+/home/suh/template/linux-releases/linux-4.4/arch/powerpc/configs/holly_defconfig:6:CONFIG_EXPERT=y
+/home/suh/template/linux-releases/linux-4.4/arch/powerpc/configs/ep88xc_defconfig:7:CONFIG_EXPERT=y
+/home/suh/template/linux-releases/linux-4.4/arch/powerpc/configs/gamecube_defconfig:7:CONFIG_EXPERT=y
+/home/suh/template/linux-releases/linux-4.4/arch/powerpc/configs/mpc7448_hpc2_defconfig:7:CONFIG_EXPERT=y
+/home/suh/template/linux-releases/linux-4.4/arch/powerpc/configs/ppc44x_defconfig:6:CONFIG_EXPERT=y
+/home/suh/template/linux-releases/linux-4.4/arch/powerpc/configs/mpc8272_ads_defconfig:7:CONFIG_EXPERT=y
+/home/suh/template/linux-releases/linux-4.4/arch/powerpc/configs/86xx/gef_sbc610_defconfig:13:CONFIG_EXPERT=y
+/home/suh/template/linux-releases/linux-4.4/arch/powerpc/configs/86xx/mpc8641_hpcn_defconfig:13:CONFIG_EXPERT=y
+/home/suh/template/linux-releases/linux-4.4/arch/powerpc/configs/86xx/mpc8610_hpcd_defconfig:9:CONFIG_EXPERT=y
+/home/suh/template/linux-releases/linux-4.4/arch/powerpc/configs/86xx/sbc8641d_defconfig:13:CONFIG_EXPERT=y
+/home/suh/template/linux-releases/linux-4.4/arch/powerpc/configs/86xx/gef_sbc310_defconfig:13:CONFIG_EXPERT=y
+/home/suh/template/linux-releases/linux-4.4/arch/powerpc/configs/86xx/gef_ppc9a_defconfig:13:CONFIG_EXPERT=y
+/home/suh/template/linux-releases/linux-4.4/arch/powerpc/configs/mpc83xx_defconfig:4:CONFIG_EXPERT=y
+/home/suh/template/linux-releases/linux-4.4/arch/powerpc/configs/ppc40x_defconfig:6:CONFIG_EXPERT=y
+/home/suh/template/linux-releases/linux-4.4/arch/m32r/configs/m32700ut.smp_defconfig:8:CONFIG_EXPERT=y
+/home/suh/template/linux-releases/linux-4.4/arch/m32r/configs/opsput_defconfig:7:CONFIG_EXPERT=y
+/home/suh/template/linux-releases/linux-4.4/arch/m32r/configs/mappi.up_defconfig:8:CONFIG_EXPERT=y
+/home/suh/template/linux-releases/linux-4.4/arch/m32r/configs/mappi2.vdec2_defconfig:7:CONFIG_EXPERT=y
+/home/suh/template/linux-releases/linux-4.4/arch/m32r/configs/mappi.nommu_defconfig:6:CONFIG_EXPERT=y
+/home/suh/template/linux-releases/linux-4.4/arch/m32r/configs/usrv_defconfig:8:CONFIG_EXPERT=y
+/home/suh/template/linux-releases/linux-4.4/arch/m32r/configs/mappi3.smp_defconfig:8:CONFIG_EXPERT=y
+/home/suh/template/linux-releases/linux-4.4/arch/m32r/configs/m32700ut.up_defconfig:8:CONFIG_EXPERT=y
+/home/suh/template/linux-releases/linux-4.4/arch/m32r/configs/oaks32r_defconfig:5:CONFIG_EXPERT=y
+/home/suh/template/linux-releases/linux-4.4/arch/m32r/configs/mappi2.opsp_defconfig:7:CONFIG_EXPERT=y
+/home/suh/template/linux-releases/linux-4.4/arch/m32r/configs/mappi.smp_defconfig:8:CONFIG_EXPERT=y
+/home/suh/template/linux-releases/linux-4.4/arch/openrisc/configs/or1ksim_defconfig:6:CONFIG_EXPERT=y
+/home/suh/template/linux-releases/linux-4.4/arch/blackfin/configs/BF537-STAMP_defconfig:7:CONFIG_EXPERT=y
+/home/suh/template/linux-releases/linux-4.4/arch/blackfin/configs/TCM-BF518_defconfig:10:CONFIG_EXPERT=y
+/home/suh/template/linux-releases/linux-4.4/arch/blackfin/configs/BF527-AD7160-EVAL_defconfig:8:CONFIG_EXPERT=y
+/home/suh/template/linux-releases/linux-4.4/arch/blackfin/configs/BF561-ACVILON_defconfig:8:CONFIG_EXPERT=y
+/home/suh/template/linux-releases/linux-4.4/arch/blackfin/configs/CM-BF561_defconfig:11:CONFIG_EXPERT=y
+/home/suh/template/linux-releases/linux-4.4/arch/blackfin/configs/BF526-EZBRD_defconfig:7:CONFIG_EXPERT=y
+/home/suh/template/linux-releases/linux-4.4/arch/blackfin/configs/BF561-EZKIT-SMP_defconfig:7:CONFIG_EXPERT=y
+/home/suh/template/linux-releases/linux-4.4/arch/blackfin/configs/BF609-EZKIT_defconfig:8:CONFIG_EXPERT=y
+/home/suh/template/linux-releases/linux-4.4/arch/blackfin/configs/CM-BF533_defconfig:10:CONFIG_EXPERT=y
+/home/suh/template/linux-releases/linux-4.4/arch/blackfin/configs/BlackStamp_defconfig:9:CONFIG_EXPERT=y
+/home/suh/template/linux-releases/linux-4.4/arch/blackfin/configs/SRV1_defconfig:6:CONFIG_EXPERT=y
+/home/suh/template/linux-releases/linux-4.4/arch/blackfin/configs/BF518F-EZBRD_defconfig:7:CONFIG_EXPERT=y
+/home/suh/template/linux-releases/linux-4.4/arch/blackfin/configs/BF527-EZKIT_defconfig:7:CONFIG_EXPERT=y
+/home/suh/template/linux-releases/linux-4.4/arch/blackfin/configs/BF548-EZKIT_defconfig:7:CONFIG_EXPERT=y
+/home/suh/template/linux-releases/linux-4.4/arch/blackfin/configs/H8606_defconfig:5:CONFIG_EXPERT=y
+/home/suh/template/linux-releases/linux-4.4/arch/blackfin/configs/BF538-EZKIT_defconfig:8:CONFIG_EXPERT=y
+/home/suh/template/linux-releases/linux-4.4/arch/blackfin/configs/BF527-EZKIT-V2_defconfig:7:CONFIG_EXPERT=y
+/home/suh/template/linux-releases/linux-4.4/arch/blackfin/configs/BF533-EZKIT_defconfig:7:CONFIG_EXPERT=y
+/home/suh/template/linux-releases/linux-4.4/arch/blackfin/configs/IP0X_defconfig:6:CONFIG_EXPERT=y
+/home/suh/template/linux-releases/linux-4.4/arch/blackfin/configs/CM-BF527_defconfig:11:CONFIG_EXPERT=y
+/home/suh/template/linux-releases/linux-4.4/arch/blackfin/configs/CM-BF537E_defconfig:11:CONFIG_EXPERT=y
+/home/suh/template/linux-releases/linux-4.4/arch/blackfin/configs/DNP5370_defconfig:8:CONFIG_EXPERT=y
+/home/suh/template/linux-releases/linux-4.4/arch/blackfin/configs/PNAV-10_defconfig:5:CONFIG_EXPERT=y
+/home/suh/template/linux-releases/linux-4.4/arch/blackfin/configs/TCM-BF537_defconfig:11:CONFIG_EXPERT=y
+/home/suh/template/linux-releases/linux-4.4/arch/blackfin/configs/CM-BF548_defconfig:11:CONFIG_EXPERT=y
+/home/suh/template/linux-releases/linux-4.4/arch/blackfin/configs/BF533-STAMP_defconfig:7:CONFIG_EXPERT=y
+/home/suh/template/linux-releases/linux-4.4/arch/blackfin/configs/CM-BF537U_defconfig:11:CONFIG_EXPERT=y
+/home/suh/template/linux-releases/linux-4.4/arch/blackfin/configs/BF561-EZKIT_defconfig:7:CONFIG_EXPERT=y
+/home/suh/template/linux-releases/linux-4.4/arch/blackfin/configs/BF527-TLL6527M_defconfig:9:CONFIG_EXPERT=y
+/home/suh/template/linux-releases/linux-4.4/arch/c6x/configs/dsk6455_defconfig:13:CONFIG_EXPERT=y
+/home/suh/template/linux-releases/linux-4.4/arch/c6x/configs/evmc6472_defconfig:13:CONFIG_EXPERT=y
+/home/suh/template/linux-releases/linux-4.4/arch/c6x/configs/evmc6678_defconfig:13:CONFIG_EXPERT=y
+/home/suh/template/linux-releases/linux-4.4/arch/c6x/configs/evmc6474_defconfig:13:CONFIG_EXPERT=y
+/home/suh/template/linux-releases/linux-4.4/arch/c6x/configs/evmc6457_defconfig:13:CONFIG_EXPERT=y
+/home/suh/template/linux-releases/linux-4.4/arch/arm/configs/u300_defconfig:7:CONFIG_EXPERT=y
+/home/suh/template/linux-releases/linux-4.4/arch/arm/configs/imx_v4_v5_defconfig:9:CONFIG_EXPERT=y
+/home/suh/template/linux-releases/linux-4.4/arch/arm/configs/simpad_defconfig:5:CONFIG_EXPERT=y
+/home/suh/template/linux-releases/linux-4.4/arch/arm/configs/ebsa110_defconfig:5:CONFIG_EXPERT=y
+/home/suh/template/linux-releases/linux-4.4/arch/arm/configs/collie_defconfig:7:CONFIG_EXPERT=y
+/home/suh/template/linux-releases/linux-4.4/arch/arm/configs/cm_x2xx_defconfig:9:CONFIG_EXPERT=y
+/home/suh/template/linux-releases/linux-4.4/arch/arm/configs/footbridge_defconfig:6:CONFIG_EXPERT=y
+/home/suh/template/linux-releases/linux-4.4/arch/arm/configs/mvebu_v7_defconfig:7:CONFIG_EXPERT=y
+/home/suh/template/linux-releases/linux-4.4/arch/arm/configs/omap2plus_defconfig:27:CONFIG_EXPERT=y
+/home/suh/template/linux-releases/linux-4.4/arch/arm/configs/davinci_all_defconfig:10:CONFIG_EXPERT=y
+/home/suh/template/linux-releases/linux-4.4/arch/arm/configs/em_x270_defconfig:9:CONFIG_EXPERT=y
+/home/suh/template/linux-releases/linux-4.4/arch/arm/configs/ixp4xx_defconfig:6:CONFIG_EXPERT=y
+/home/suh/template/linux-releases/linux-4.4/arch/arm/configs/trizeps4_defconfig:10:CONFIG_EXPERT=y
+/home/suh/template/linux-releases/linux-4.4/arch/arm/configs/pcm027_defconfig:10:CONFIG_EXPERT=y
+/home/suh/template/linux-releases/linux-4.4/arch/arm/configs/dove_defconfig:6:CONFIG_EXPERT=y
+/home/suh/template/linux-releases/linux-4.4/arch/arm/configs/ezx_defconfig:10:CONFIG_EXPERT=y
+/home/suh/template/linux-releases/linux-4.4/arch/arm/configs/ep93xx_defconfig:7:CONFIG_EXPERT=y
+/home/suh/template/linux-releases/linux-4.4/arch/arm/configs/eseries_pxa_defconfig:5:CONFIG_EXPERT=y
+/home/suh/template/linux-releases/linux-4.4/arch/arm/configs/mv78xx0_defconfig:5:CONFIG_EXPERT=y
+/home/suh/template/linux-releases/linux-4.4/arch/arm/configs/nhk8815_defconfig:10:CONFIG_EXPERT=y
+/home/suh/template/linux-releases/linux-4.4/arch/arm/configs/viper_defconfig:6:CONFIG_EXPERT=y
+/home/suh/template/linux-releases/linux-4.4/arch/arm/configs/pleb_defconfig:6:CONFIG_EXPERT=y
+/home/suh/template/linux-releases/linux-4.4/arch/arm/configs/spitz_defconfig:7:CONFIG_EXPERT=y
+/home/suh/template/linux-releases/linux-4.4/arch/arm/configs/omap1_defconfig:8:CONFIG_EXPERT=y
+/home/suh/template/linux-releases/linux-4.4/arch/arm/configs/imote2_defconfig:9:CONFIG_EXPERT=y
+/home/suh/template/linux-releases/linux-4.4/arch/arm/configs/orion5x_defconfig:6:CONFIG_EXPERT=y
+/home/suh/template/linux-releases/linux-4.4/arch/arm/configs/xcep_defconfig:11:CONFIG_EXPERT=y
+/home/suh/template/linux-releases/linux-4.4/arch/arm/configs/am200epdkit_defconfig:6:CONFIG_EXPERT=y
+/home/suh/template/linux-releases/linux-4.4/arch/arm/configs/imx_v6_v7_defconfig:12:CONFIG_EXPERT=y
+/home/suh/template/linux-releases/linux-4.4/arch/arm/configs/colibri_pxa270_defconfig:11:CONFIG_EXPERT=y
+/home/suh/template/linux-releases/linux-4.4/arch/arm/configs/corgi_defconfig:7:CONFIG_EXPERT=y
+/home/suh/template/linux-releases/linux-4.4/arch/arm/configs/h5000_defconfig:7:CONFIG_EXPERT=y
+/home/suh/template/linux-releases/linux-4.4/arch/arm/configs/badge4_defconfig:3:CONFIG_EXPERT=y
+/home/suh/template/linux-releases/linux-4.4/arch/arm/configs/tct_hammer_defconfig:8:CONFIG_EXPERT=y
+/home/suh/template/linux-releases/linux-4.4/arch/arm/configs/magician_defconfig:7:CONFIG_EXPERT=y
+/home/suh/template/linux-releases/linux-4.4/arch/score/configs/spct6600_defconfig:12:CONFIG_EXPERT=y
+ 
+CONFIG_GOOGLE_FIRMWARE (Kbuild):
+/home/suh/template/linux-releases/linux-4.4/drivers/firmware/Makefile:23:obj-$(CONFIG_GOOGLE_FIRMWARE)	+= google/
+ 
+CONFIG_HAVE_CMPXCHG_LOCAL (C-Code):
+/home/suh/template/linux-releases/linux-4.4/mm/vmstat.c:308:#ifdef CONFIG_HAVE_CMPXCHG_LOCAL
+ 
+CONFIG_HSU_DMA_PCI (Kbuild):
+/home/suh/template/linux-releases/linux-4.4/drivers/dma/hsu/Makefile:4:obj-$(CONFIG_HSU_DMA_PCI)	+= hsu_dma_pci.o
+ 
+CONFIG_HSU_DMA_PCI_MODULE (Kein Fund, Kbuild):
+ 
+CONFIG_KVM_DEBUG_FS (C-Code):
+/home/suh/template/linux-releases/linux-4.4/arch/x86/kernel/kvm.c:628:#ifdef CONFIG_KVM_DEBUG_FS
+/home/suh/template/linux-releases/linux-4.4/arch/x86/kernel/kvm.c:731:#else  /* !CONFIG_KVM_DEBUG_FS */
+/home/suh/template/linux-releases/linux-4.4/arch/x86/kernel/kvm.c:744:#endif  /* CONFIG_KVM_DEBUG_FS */
+ 
+CONFIG_LEGACY_VSYSCALL_NATIVE (C-Code):
+/home/suh/template/linux-releases/linux-4.4/arch/x86/entry/vsyscall/vsyscall_64.c:42:#if defined(CONFIG_LEGACY_VSYSCALL_NATIVE)
+ 
+CONFIG_LEGACY_VSYSCALL_NONE (C-Code):
+/home/suh/template/linux-releases/linux-4.4/arch/x86/entry/vsyscall/vsyscall_64.c:44:#elif defined(CONFIG_LEGACY_VSYSCALL_NONE)
+ 
+CONFIG_LIB80211_DEBUG (C-Code):
+/home/suh/template/linux-releases/linux-4.4/net/wireless/lib80211_crypt_tkip.c:451:#ifdef CONFIG_LIB80211_DEBUG
+/home/suh/template/linux-releases/linux-4.4/net/wireless/lib80211_crypt_tkip.c:487:#ifdef CONFIG_LIB80211_DEBUG
+/home/suh/template/linux-releases/linux-4.4/net/wireless/lib80211_crypt_ccmp.c:333:#ifdef CONFIG_LIB80211_DEBUG
+/home/suh/template/linux-releases/linux-4.4/arch/mips/configs/lemote2f_defconfig:101:CONFIG_LIB80211_DEBUG=y
+ 
+CONFIG_MEDIA_SUPPORT (Kbuild):
+/home/suh/template/linux-releases/linux-4.4/drivers/media/Makefile:18:  obj-$(CONFIG_MEDIA_SUPPORT) += media.o
+/home/suh/template/linux-releases/linux-4.4/arch/parisc/configs/generic-64bit_defconfig:205:CONFIG_MEDIA_SUPPORT=m
+/home/suh/template/linux-releases/linux-4.4/arch/xtensa/configs/iss_defconfig:438:# CONFIG_MEDIA_SUPPORT is not set
+/home/suh/template/linux-releases/linux-4.4/arch/mips/configs/pistachio_defconfig:210:CONFIG_MEDIA_SUPPORT=y
+/home/suh/template/linux-releases/linux-4.4/arch/mips/configs/lemote2f_defconfig:171:CONFIG_MEDIA_SUPPORT=m
+/home/suh/template/linux-releases/linux-4.4/arch/mips/configs/loongson3_defconfig:250:CONFIG_MEDIA_SUPPORT=m
+/home/suh/template/linux-releases/linux-4.4/arch/powerpc/configs/mpc512x_defconfig:97:CONFIG_MEDIA_SUPPORT=y
+/home/suh/template/linux-releases/linux-4.4/arch/unicore32/configs/unicore32_defconfig:126:CONFIG_MEDIA_SUPPORT=n
+/home/suh/template/linux-releases/linux-4.4/arch/blackfin/configs/BF527-TLL6527M_defconfig:120:CONFIG_MEDIA_SUPPORT=y
+/home/suh/template/linux-releases/linux-4.4/arch/arm/configs/imx_v4_v5_defconfig:116:CONFIG_MEDIA_SUPPORT=y
+/home/suh/template/linux-releases/linux-4.4/arch/arm/configs/exynos_defconfig:130:CONFIG_MEDIA_SUPPORT=m
+/home/suh/template/linux-releases/linux-4.4/arch/arm/configs/tegra_defconfig:183:CONFIG_MEDIA_SUPPORT=y
+/home/suh/template/linux-releases/linux-4.4/arch/arm/configs/ezx_defconfig:234:CONFIG_MEDIA_SUPPORT=y
+/home/suh/template/linux-releases/linux-4.4/arch/arm/configs/sama5_defconfig:136:CONFIG_MEDIA_SUPPORT=y
+/home/suh/template/linux-releases/linux-4.4/arch/arm/configs/imote2_defconfig:212:CONFIG_MEDIA_SUPPORT=y
+/home/suh/template/linux-releases/linux-4.4/arch/arm/configs/shmobile_defconfig:129:CONFIG_MEDIA_SUPPORT=y
+/home/suh/template/linux-releases/linux-4.4/arch/arm/configs/imx_v6_v7_defconfig:211:CONFIG_MEDIA_SUPPORT=y
+/home/suh/template/linux-releases/linux-4.4/arch/arm/configs/at91_dt_defconfig:131:CONFIG_MEDIA_SUPPORT=y
+/home/suh/template/linux-releases/linux-4.4/arch/arm/configs/qcom_defconfig:113:CONFIG_MEDIA_SUPPORT=y
+/home/suh/template/linux-releases/linux-4.4/arch/arm/configs/multi_v7_defconfig:449:CONFIG_MEDIA_SUPPORT=m
+/home/suh/template/linux-releases/linux-4.4/arch/sh/configs/migor_defconfig:68:CONFIG_MEDIA_SUPPORT=y
+/home/suh/template/linux-releases/linux-4.4/arch/sh/configs/ap325rxa_defconfig:71:CONFIG_MEDIA_SUPPORT=y
+/home/suh/template/linux-releases/linux-4.4/arch/sh/configs/ecovec24_defconfig:79:CONFIG_MEDIA_SUPPORT=y
+/home/suh/template/linux-releases/linux-4.4/arch/sh/configs/se7724_defconfig:75:CONFIG_MEDIA_SUPPORT=y
+/home/suh/template/linux-releases/linux-4.4/arch/sh/configs/urquell_defconfig:91:CONFIG_MEDIA_SUPPORT=y
+ 
+CONFIG_MEDIA_SUPPORT_MODULE (Kein Fund, Kbuild):
+ 
+CONFIG_MEMSTICK_UNSAFE_RESUME (C-Code):
+/home/suh/template/linux-releases/linux-4.4/drivers/memstick/core/ms_block.c:2252:#ifndef CONFIG_MEMSTICK_UNSAFE_RESUME
+/home/suh/template/linux-releases/linux-4.4/drivers/memstick/core/mspro_block.c:1381:#ifdef CONFIG_MEMSTICK_UNSAFE_RESUME
+/home/suh/template/linux-releases/linux-4.4/drivers/memstick/core/mspro_block.c:1422:#endif /* CONFIG_MEMSTICK_UNSAFE_RESUME */
+ 
+CONFIG_MICREL_KS8995MA (Kbuild):
+/home/suh/template/linux-releases/linux-4.4/drivers/net/phy/Makefile:34:obj-$(CONFIG_MICREL_KS8995MA)	+= spi_ks8995.o
+ 
+CONFIG_MICREL_KS8995MA_MODULE (Kein Fund, Kbuild):
+ 
+CONFIG_MTD_OTP (C-Code):
+/home/suh/template/linux-releases/linux-4.4/drivers/mtd/chips/cfi_cmdset_0001.c:71:#ifdef CONFIG_MTD_OTP
+/home/suh/template/linux-releases/linux-4.4/drivers/mtd/chips/cfi_cmdset_0001.c:634:#ifdef CONFIG_MTD_OTP
+/home/suh/template/linux-releases/linux-4.4/drivers/mtd/chips/cfi_cmdset_0001.c:2194:#ifdef CONFIG_MTD_OTP
+/home/suh/template/linux-releases/linux-4.4/arch/arm/configs/ezx_defconfig:185:CONFIG_MTD_OTP=y
+/home/suh/template/linux-releases/linux-4.4/arch/arm/configs/imote2_defconfig:165:CONFIG_MTD_OTP=y
+ 
+CONFIG_NET_VENDOR_AGERE (Kbuild):
+/home/suh/template/linux-releases/linux-4.4/drivers/net/ethernet/Makefile:9:obj-$(CONFIG_NET_VENDOR_AGERE) += agere/
+ 
+CONFIG_NET_VENDOR_ARC (Kbuild):
+/home/suh/template/linux-releases/linux-4.4/drivers/net/ethernet/Makefile:16:obj-$(CONFIG_NET_VENDOR_ARC) += arc/
+/home/suh/template/linux-releases/linux-4.4/arch/m68k/configs/hp300_defconfig:339:# CONFIG_NET_VENDOR_ARC is not set
+/home/suh/template/linux-releases/linux-4.4/arch/m68k/configs/mvme147_defconfig:337:# CONFIG_NET_VENDOR_ARC is not set
+/home/suh/template/linux-releases/linux-4.4/arch/m68k/configs/apollo_defconfig:338:# CONFIG_NET_VENDOR_ARC is not set
+/home/suh/template/linux-releases/linux-4.4/arch/m68k/configs/mvme16x_defconfig:337:# CONFIG_NET_VENDOR_ARC is not set
+/home/suh/template/linux-releases/linux-4.4/arch/m68k/configs/sun3_defconfig:335:# CONFIG_NET_VENDOR_ARC is not set
+/home/suh/template/linux-releases/linux-4.4/arch/m68k/configs/atari_defconfig:348:# CONFIG_NET_VENDOR_ARC is not set
+/home/suh/template/linux-releases/linux-4.4/arch/m68k/configs/sun3x_defconfig:335:# CONFIG_NET_VENDOR_ARC is not set
+/home/suh/template/linux-releases/linux-4.4/arch/m68k/configs/q40_defconfig:345:# CONFIG_NET_VENDOR_ARC is not set
+/home/suh/template/linux-releases/linux-4.4/arch/m68k/configs/amiga_defconfig:359:# CONFIG_NET_VENDOR_ARC is not set
+/home/suh/template/linux-releases/linux-4.4/arch/m68k/configs/bvme6000_defconfig:337:# CONFIG_NET_VENDOR_ARC is not set
+/home/suh/template/linux-releases/linux-4.4/arch/m68k/configs/multi_defconfig:395:# CONFIG_NET_VENDOR_ARC is not set
+/home/suh/template/linux-releases/linux-4.4/arch/m68k/configs/mac_defconfig:355:# CONFIG_NET_VENDOR_ARC is not set
+/home/suh/template/linux-releases/linux-4.4/arch/xtensa/configs/smp_lx200_defconfig:73:# CONFIG_NET_VENDOR_ARC is not set
+/home/suh/template/linux-releases/linux-4.4/arch/xtensa/configs/nommu_kc705_defconfig:71:# CONFIG_NET_VENDOR_ARC is not set
+/home/suh/template/linux-releases/linux-4.4/arch/xtensa/configs/audio_kc705_defconfig:70:# CONFIG_NET_VENDOR_ARC is not set
+/home/suh/template/linux-releases/linux-4.4/arch/xtensa/configs/generic_kc705_defconfig:69:# CONFIG_NET_VENDOR_ARC is not set
+/home/suh/template/linux-releases/linux-4.4/arch/s390/configs/gcov_defconfig:421:# CONFIG_NET_VENDOR_ARC is not set
+/home/suh/template/linux-releases/linux-4.4/arch/s390/configs/performance_defconfig:421:# CONFIG_NET_VENDOR_ARC is not set
+/home/suh/template/linux-releases/linux-4.4/arch/s390/configs/default_defconfig:425:# CONFIG_NET_VENDOR_ARC is not set
+/home/suh/template/linux-releases/linux-4.4/arch/arc/configs/axs101_defconfig:48:# CONFIG_NET_VENDOR_ARC is not set
+/home/suh/template/linux-releases/linux-4.4/arch/arc/configs/vdk_hs38_smp_defconfig:46:# CONFIG_NET_VENDOR_ARC is not set
+/home/suh/template/linux-releases/linux-4.4/arch/arc/configs/vdk_hs38_defconfig:44:# CONFIG_NET_VENDOR_ARC is not set
+/home/suh/template/linux-releases/linux-4.4/arch/arc/configs/axs103_smp_defconfig:54:# CONFIG_NET_VENDOR_ARC is not set
+/home/suh/template/linux-releases/linux-4.4/arch/arc/configs/nsimosci_hs_smp_defconfig:48:# CONFIG_NET_VENDOR_ARC is not set
+/home/suh/template/linux-releases/linux-4.4/arch/arc/configs/axs103_defconfig:53:# CONFIG_NET_VENDOR_ARC is not set
+/home/suh/template/linux-releases/linux-4.4/arch/mips/configs/loongson3_defconfig:167:# CONFIG_NET_VENDOR_ARC is not set
+/home/suh/template/linux-releases/linux-4.4/arch/mips/configs/ci20_defconfig:56:# CONFIG_NET_VENDOR_ARC is not set
+/home/suh/template/linux-releases/linux-4.4/arch/powerpc/configs/44x/akebono_defconfig:57:# CONFIG_NET_VENDOR_ARC is not set
+/home/suh/template/linux-releases/linux-4.4/arch/arm/configs/lpc18xx_defconfig:72:# CONFIG_NET_VENDOR_ARC is not set
+/home/suh/template/linux-releases/linux-4.4/arch/arm/configs/sunxi_defconfig:46:# CONFIG_NET_VENDOR_ARC is not set
+/home/suh/template/linux-releases/linux-4.4/arch/arm/configs/efm32_defconfig:54:# CONFIG_NET_VENDOR_ARC is not set
+/home/suh/template/linux-releases/linux-4.4/arch/arm/configs/omap2plus_defconfig:153:# CONFIG_NET_VENDOR_ARC is not set
+/home/suh/template/linux-releases/linux-4.4/arch/arm/configs/shmobile_defconfig:69:# CONFIG_NET_VENDOR_ARC is not set
+/home/suh/template/linux-releases/linux-4.4/arch/arm/configs/moxart_defconfig:62:# CONFIG_NET_VENDOR_ARC is not set
+ 
+CONFIG_NET_VENDOR_AURORA (Kbuild):
+/home/suh/template/linux-releases/linux-4.4/drivers/net/ethernet/Makefile:18:obj-$(CONFIG_NET_VENDOR_AURORA) += aurora/
+ 
+CONFIG_NET_VENDOR_CISCO (Kbuild):
+/home/suh/template/linux-releases/linux-4.4/drivers/net/ethernet/Makefile:27:obj-$(CONFIG_NET_VENDOR_CISCO) += cisco/
+/home/suh/template/linux-releases/linux-4.4/arch/parisc/configs/generic-64bit_defconfig:110:# CONFIG_NET_VENDOR_CISCO is not set
+/home/suh/template/linux-releases/linux-4.4/arch/parisc/configs/generic-32bit_defconfig:103:# CONFIG_NET_VENDOR_CISCO is not set
+/home/suh/template/linux-releases/linux-4.4/arch/mips/configs/maltasmvp_defconfig:102:# CONFIG_NET_VENDOR_CISCO is not set
+/home/suh/template/linux-releases/linux-4.4/arch/mips/configs/maltasmvp_eva_defconfig:105:# CONFIG_NET_VENDOR_CISCO is not set
+/home/suh/template/linux-releases/linux-4.4/arch/mips/configs/maltaup_defconfig:100:# CONFIG_NET_VENDOR_CISCO is not set
+/home/suh/template/linux-releases/linux-4.4/arch/mips/configs/malta_qemu_32r6_defconfig:100:# CONFIG_NET_VENDOR_CISCO is not set
+/home/suh/template/linux-releases/linux-4.4/arch/mips/configs/maltaaprp_defconfig:101:# CONFIG_NET_VENDOR_CISCO is not set
+/home/suh/template/linux-releases/linux-4.4/arch/mips/configs/cavium_octeon_defconfig:74:# CONFIG_NET_VENDOR_CISCO is not set
+/home/suh/template/linux-releases/linux-4.4/arch/mips/configs/loongson3_defconfig:174:# CONFIG_NET_VENDOR_CISCO is not set
+/home/suh/template/linux-releases/linux-4.4/arch/powerpc/configs/44x/akebono_defconfig:62:# CONFIG_NET_VENDOR_CISCO is not set
+/home/suh/template/linux-releases/linux-4.4/arch/powerpc/configs/85xx/kmp204x_defconfig:124:# CONFIG_NET_VENDOR_CISCO is not set
+ 
+CONFIG_NET_VENDOR_EMULEX (Kbuild):
+/home/suh/template/linux-releases/linux-4.4/drivers/net/ethernet/Makefile:33:obj-$(CONFIG_NET_VENDOR_EMULEX) += emulex/
+/home/suh/template/linux-releases/linux-4.4/arch/parisc/configs/generic-64bit_defconfig:114:# CONFIG_NET_VENDOR_EMULEX is not set
+/home/suh/template/linux-releases/linux-4.4/arch/parisc/configs/generic-32bit_defconfig:107:# CONFIG_NET_VENDOR_EMULEX is not set
+/home/suh/template/linux-releases/linux-4.4/arch/mips/configs/maltasmvp_defconfig:105:# CONFIG_NET_VENDOR_EMULEX is not set
+/home/suh/template/linux-releases/linux-4.4/arch/mips/configs/maltasmvp_eva_defconfig:108:# CONFIG_NET_VENDOR_EMULEX is not set
+/home/suh/template/linux-releases/linux-4.4/arch/mips/configs/nlm_xlp_defconfig:376:# CONFIG_NET_VENDOR_EMULEX is not set
+/home/suh/template/linux-releases/linux-4.4/arch/mips/configs/maltaup_defconfig:103:# CONFIG_NET_VENDOR_EMULEX is not set
+/home/suh/template/linux-releases/linux-4.4/arch/mips/configs/malta_qemu_32r6_defconfig:103:# CONFIG_NET_VENDOR_EMULEX is not set
+/home/suh/template/linux-releases/linux-4.4/arch/mips/configs/maltaaprp_defconfig:104:# CONFIG_NET_VENDOR_EMULEX is not set
+/home/suh/template/linux-releases/linux-4.4/arch/mips/configs/cavium_octeon_defconfig:77:# CONFIG_NET_VENDOR_EMULEX is not set
+/home/suh/template/linux-releases/linux-4.4/arch/mips/configs/loongson3_defconfig:177:# CONFIG_NET_VENDOR_EMULEX is not set
+/home/suh/template/linux-releases/linux-4.4/arch/powerpc/configs/44x/akebono_defconfig:65:# CONFIG_NET_VENDOR_EMULEX is not set
+/home/suh/template/linux-releases/linux-4.4/arch/powerpc/configs/85xx/kmp204x_defconfig:127:# CONFIG_NET_VENDOR_EMULEX is not set
+ 
+CONFIG_NET_VENDOR_EZCHIP (Kbuild):
+/home/suh/template/linux-releases/linux-4.4/drivers/net/ethernet/Makefile:34:obj-$(CONFIG_NET_VENDOR_EZCHIP) += ezchip/
+/home/suh/template/linux-releases/linux-4.4/arch/m68k/configs/hp300_defconfig:342:# CONFIG_NET_VENDOR_EZCHIP is not set
+/home/suh/template/linux-releases/linux-4.4/arch/m68k/configs/mvme147_defconfig:340:# CONFIG_NET_VENDOR_EZCHIP is not set
+/home/suh/template/linux-releases/linux-4.4/arch/m68k/configs/apollo_defconfig:341:# CONFIG_NET_VENDOR_EZCHIP is not set
+/home/suh/template/linux-releases/linux-4.4/arch/m68k/configs/mvme16x_defconfig:340:# CONFIG_NET_VENDOR_EZCHIP is not set
+/home/suh/template/linux-releases/linux-4.4/arch/m68k/configs/sun3_defconfig:337:# CONFIG_NET_VENDOR_EZCHIP is not set
+/home/suh/template/linux-releases/linux-4.4/arch/m68k/configs/atari_defconfig:351:# CONFIG_NET_VENDOR_EZCHIP is not set
+/home/suh/template/linux-releases/linux-4.4/arch/m68k/configs/sun3x_defconfig:338:# CONFIG_NET_VENDOR_EZCHIP is not set
+/home/suh/template/linux-releases/linux-4.4/arch/m68k/configs/q40_defconfig:349:# CONFIG_NET_VENDOR_EZCHIP is not set
+/home/suh/template/linux-releases/linux-4.4/arch/m68k/configs/amiga_defconfig:363:# CONFIG_NET_VENDOR_EZCHIP is not set
+/home/suh/template/linux-releases/linux-4.4/arch/m68k/configs/bvme6000_defconfig:340:# CONFIG_NET_VENDOR_EZCHIP is not set
+/home/suh/template/linux-releases/linux-4.4/arch/m68k/configs/multi_defconfig:399:# CONFIG_NET_VENDOR_EZCHIP is not set
+/home/suh/template/linux-releases/linux-4.4/arch/m68k/configs/mac_defconfig:359:# CONFIG_NET_VENDOR_EZCHIP is not set
+ 
+CONFIG_NET_VENDOR_MICROCHIP (Kbuild):
+/home/suh/template/linux-releases/linux-4.4/drivers/net/ethernet/Makefile:51:obj-$(CONFIG_NET_VENDOR_MICROCHIP) += microchip/
+/home/suh/template/linux-releases/linux-4.4/arch/mips/configs/pistachio_defconfig:152:# CONFIG_NET_VENDOR_MICROCHIP is not set
+/home/suh/template/linux-releases/linux-4.4/arch/powerpc/configs/85xx/kmp204x_defconfig:136:# CONFIG_NET_VENDOR_MICROCHIP is not set
+/home/suh/template/linux-releases/linux-4.4/arch/blackfin/configs/BF537-STAMP_defconfig:75:# CONFIG_NET_VENDOR_MICROCHIP is not set
+/home/suh/template/linux-releases/linux-4.4/arch/blackfin/configs/BF526-EZBRD_defconfig:80:# CONFIG_NET_VENDOR_MICROCHIP is not set
+/home/suh/template/linux-releases/linux-4.4/arch/blackfin/configs/BF561-EZKIT-SMP_defconfig:68:# CONFIG_NET_VENDOR_MICROCHIP is not set
+/home/suh/template/linux-releases/linux-4.4/arch/blackfin/configs/BF609-EZKIT_defconfig:77:# CONFIG_NET_VENDOR_MICROCHIP is not set
+/home/suh/template/linux-releases/linux-4.4/arch/blackfin/configs/BF518F-EZBRD_defconfig:65:# CONFIG_NET_VENDOR_MICROCHIP is not set
+/home/suh/template/linux-releases/linux-4.4/arch/blackfin/configs/BF527-EZKIT_defconfig:82:# CONFIG_NET_VENDOR_MICROCHIP is not set
+/home/suh/template/linux-releases/linux-4.4/arch/blackfin/configs/BF548-EZKIT_defconfig:92:# CONFIG_NET_VENDOR_MICROCHIP is not set
+/home/suh/template/linux-releases/linux-4.4/arch/blackfin/configs/BF527-EZKIT-V2_defconfig:83:# CONFIG_NET_VENDOR_MICROCHIP is not set
+/home/suh/template/linux-releases/linux-4.4/arch/blackfin/configs/BF533-EZKIT_defconfig:68:# CONFIG_NET_VENDOR_MICROCHIP is not set
+/home/suh/template/linux-releases/linux-4.4/arch/blackfin/configs/BF533-STAMP_defconfig:66:# CONFIG_NET_VENDOR_MICROCHIP is not set
+/home/suh/template/linux-releases/linux-4.4/arch/blackfin/configs/BF561-EZKIT_defconfig:70:# CONFIG_NET_VENDOR_MICROCHIP is not set
+/home/suh/template/linux-releases/linux-4.4/arch/arm/configs/lpc18xx_defconfig:81:# CONFIG_NET_VENDOR_MICROCHIP is not set
+/home/suh/template/linux-releases/linux-4.4/arch/arm/configs/sunxi_defconfig:54:# CONFIG_NET_VENDOR_MICROCHIP is not set
+/home/suh/template/linux-releases/linux-4.4/arch/arm/configs/efm32_defconfig:62:# CONFIG_NET_VENDOR_MICROCHIP is not set
+/home/suh/template/linux-releases/linux-4.4/arch/arm/configs/omap2plus_defconfig:164:# CONFIG_NET_VENDOR_MICROCHIP is not set
+/home/suh/template/linux-releases/linux-4.4/arch/arm/configs/sama5_defconfig:89:# CONFIG_NET_VENDOR_MICROCHIP is not set
+/home/suh/template/linux-releases/linux-4.4/arch/arm/configs/imx_v6_v7_defconfig:133:# CONFIG_NET_VENDOR_MICROCHIP is not set
+/home/suh/template/linux-releases/linux-4.4/arch/arm/configs/lpc32xx_defconfig:80:# CONFIG_NET_VENDOR_MICROCHIP is not set
+ 
+CONFIG_NET_VENDOR_QUALCOMM (Kbuild)
+/home/suh/template/linux-releases/linux-4.4/drivers/net/ethernet/Makefile:66:obj-$(CONFIG_NET_VENDOR_QUALCOMM) += qualcomm/
+/home/suh/template/linux-releases/linux-4.4/arch/m68k/configs/hp300_defconfig:347:# CONFIG_NET_VENDOR_QUALCOMM is not set
+/home/suh/template/linux-releases/linux-4.4/arch/m68k/configs/mvme147_defconfig:345:# CONFIG_NET_VENDOR_QUALCOMM is not set
+/home/suh/template/linux-releases/linux-4.4/arch/m68k/configs/apollo_defconfig:346:# CONFIG_NET_VENDOR_QUALCOMM is not set
+/home/suh/template/linux-releases/linux-4.4/arch/m68k/configs/mvme16x_defconfig:345:# CONFIG_NET_VENDOR_QUALCOMM is not set
+/home/suh/template/linux-releases/linux-4.4/arch/m68k/configs/sun3_defconfig:342:# CONFIG_NET_VENDOR_QUALCOMM is not set
+/home/suh/template/linux-releases/linux-4.4/arch/m68k/configs/atari_defconfig:356:# CONFIG_NET_VENDOR_QUALCOMM is not set
+/home/suh/template/linux-releases/linux-4.4/arch/m68k/configs/sun3x_defconfig:343:# CONFIG_NET_VENDOR_QUALCOMM is not set
+/home/suh/template/linux-releases/linux-4.4/arch/m68k/configs/q40_defconfig:355:# CONFIG_NET_VENDOR_QUALCOMM is not set
+/home/suh/template/linux-releases/linux-4.4/arch/m68k/configs/amiga_defconfig:371:# CONFIG_NET_VENDOR_QUALCOMM is not set
+/home/suh/template/linux-releases/linux-4.4/arch/m68k/configs/bvme6000_defconfig:345:# CONFIG_NET_VENDOR_QUALCOMM is not set
+/home/suh/template/linux-releases/linux-4.4/arch/m68k/configs/multi_defconfig:411:# CONFIG_NET_VENDOR_QUALCOMM is not set
+/home/suh/template/linux-releases/linux-4.4/arch/m68k/configs/mac_defconfig:365:# CONFIG_NET_VENDOR_QUALCOMM is not set
+/home/suh/template/linux-releases/linux-4.4/arch/mips/configs/ci20_defconfig:65:# CONFIG_NET_VENDOR_QUALCOMM is not set
+/home/suh/template/linux-releases/linux-4.4/arch/arm/configs/lpc18xx_defconfig:83:# CONFIG_NET_VENDOR_QUALCOMM is not set
+/home/suh/template/linux-releases/linux-4.4/arch/arm/configs/omap2plus_defconfig:166:# CONFIG_NET_VENDOR_QUALCOMM is not set
+ 
+CONFIG_NET_VENDOR_RDC (Kbuild):
+/home/suh/template/linux-releases/linux-4.4/drivers/net/ethernet/Makefile:69:obj-$(CONFIG_NET_VENDOR_RDC) += rdc/
+/home/suh/template/linux-releases/linux-4.4/arch/parisc/configs/generic-64bit_defconfig:130:# CONFIG_NET_VENDOR_RDC is not set
+/home/suh/template/linux-releases/linux-4.4/arch/parisc/configs/generic-32bit_defconfig:120:# CONFIG_NET_VENDOR_RDC is not set
+/home/suh/template/linux-releases/linux-4.4/arch/mips/configs/maltasmvp_defconfig:119:# CONFIG_NET_VENDOR_RDC is not set
+/home/suh/template/linux-releases/linux-4.4/arch/mips/configs/maltasmvp_eva_defconfig:122:# CONFIG_NET_VENDOR_RDC is not set
+/home/suh/template/linux-releases/linux-4.4/arch/mips/configs/nlm_xlp_defconfig:391:# CONFIG_NET_VENDOR_RDC is not set
+/home/suh/template/linux-releases/linux-4.4/arch/mips/configs/maltaup_defconfig:117:# CONFIG_NET_VENDOR_RDC is not set
+/home/suh/template/linux-releases/linux-4.4/arch/mips/configs/malta_qemu_32r6_defconfig:117:# CONFIG_NET_VENDOR_RDC is not set
+/home/suh/template/linux-releases/linux-4.4/arch/mips/configs/maltaaprp_defconfig:118:# CONFIG_NET_VENDOR_RDC is not set
+/home/suh/template/linux-releases/linux-4.4/arch/mips/configs/cavium_octeon_defconfig:91:# CONFIG_NET_VENDOR_RDC is not set
+/home/suh/template/linux-releases/linux-4.4/arch/mips/configs/loongson3_defconfig:198:# CONFIG_NET_VENDOR_RDC is not set
+/home/suh/template/linux-releases/linux-4.4/arch/powerpc/configs/44x/akebono_defconfig:78:# CONFIG_NET_VENDOR_RDC is not set
+/home/suh/template/linux-releases/linux-4.4/arch/powerpc/configs/85xx/kmp204x_defconfig:144:# CONFIG_NET_VENDOR_RDC is not set
+ 
+CONFIG_NET_VENDOR_ROCKER (Kbuild):
+/home/suh/template/linux-releases/linux-4.4/drivers/net/ethernet/Makefile:70:obj-$(CONFIG_NET_VENDOR_ROCKER) += rocker/
+/home/suh/template/linux-releases/linux-4.4/arch/m68k/configs/hp300_defconfig:349:# CONFIG_NET_VENDOR_ROCKER is not set
+/home/suh/template/linux-releases/linux-4.4/arch/m68k/configs/mvme147_defconfig:347:# CONFIG_NET_VENDOR_ROCKER is not set
+/home/suh/template/linux-releases/linux-4.4/arch/m68k/configs/apollo_defconfig:348:# CONFIG_NET_VENDOR_ROCKER is not set
+/home/suh/template/linux-releases/linux-4.4/arch/m68k/configs/mvme16x_defconfig:347:# CONFIG_NET_VENDOR_ROCKER is not set
+/home/suh/template/linux-releases/linux-4.4/arch/m68k/configs/sun3_defconfig:344:# CONFIG_NET_VENDOR_ROCKER is not set
+/home/suh/template/linux-releases/linux-4.4/arch/m68k/configs/atari_defconfig:358:# CONFIG_NET_VENDOR_ROCKER is not set
+/home/suh/template/linux-releases/linux-4.4/arch/m68k/configs/sun3x_defconfig:345:# CONFIG_NET_VENDOR_ROCKER is not set
+/home/suh/template/linux-releases/linux-4.4/arch/m68k/configs/q40_defconfig:357:# CONFIG_NET_VENDOR_ROCKER is not set
+/home/suh/template/linux-releases/linux-4.4/arch/m68k/configs/amiga_defconfig:373:# CONFIG_NET_VENDOR_ROCKER is not set
+/home/suh/template/linux-releases/linux-4.4/arch/m68k/configs/bvme6000_defconfig:347:# CONFIG_NET_VENDOR_ROCKER is not set
+/home/suh/template/linux-releases/linux-4.4/arch/m68k/configs/multi_defconfig:413:# CONFIG_NET_VENDOR_ROCKER is not set
+/home/suh/template/linux-releases/linux-4.4/arch/m68k/configs/mac_defconfig:367:# CONFIG_NET_VENDOR_ROCKER is not set
+/home/suh/template/linux-releases/linux-4.4/arch/mips/configs/ci20_defconfig:66:# CONFIG_NET_VENDOR_ROCKER is not set
+/home/suh/template/linux-releases/linux-4.4/arch/arm/configs/lpc18xx_defconfig:84:# CONFIG_NET_VENDOR_ROCKER is not set
+ 
+CONFIG_NET_VENDOR_SILAN (Kbuild):
+/home/suh/template/linux-releases/linux-4.4/drivers/net/ethernet/Makefile:73:obj-$(CONFIG_NET_VENDOR_SILAN) += silan/
+/home/suh/template/linux-releases/linux-4.4/arch/parisc/configs/generic-64bit_defconfig:132:# CONFIG_NET_VENDOR_SILAN is not set
+/home/suh/template/linux-releases/linux-4.4/arch/parisc/configs/generic-32bit_defconfig:122:# CONFIG_NET_VENDOR_SILAN is not set
+/home/suh/template/linux-releases/linux-4.4/arch/mips/configs/maltasmvp_defconfig:121:# CONFIG_NET_VENDOR_SILAN is not set
+/home/suh/template/linux-releases/linux-4.4/arch/mips/configs/maltasmvp_eva_defconfig:124:# CONFIG_NET_VENDOR_SILAN is not set
+/home/suh/template/linux-releases/linux-4.4/arch/mips/configs/nlm_xlp_defconfig:393:# CONFIG_NET_VENDOR_SILAN is not set
+/home/suh/template/linux-releases/linux-4.4/arch/mips/configs/maltaup_defconfig:119:# CONFIG_NET_VENDOR_SILAN is not set
+/home/suh/template/linux-releases/linux-4.4/arch/mips/configs/malta_qemu_32r6_defconfig:119:# CONFIG_NET_VENDOR_SILAN is not set
+/home/suh/template/linux-releases/linux-4.4/arch/mips/configs/maltaaprp_defconfig:120:# CONFIG_NET_VENDOR_SILAN is not set
+/home/suh/template/linux-releases/linux-4.4/arch/mips/configs/cavium_octeon_defconfig:93:# CONFIG_NET_VENDOR_SILAN is not set
+/home/suh/template/linux-releases/linux-4.4/arch/mips/configs/loongson3_defconfig:200:# CONFIG_NET_VENDOR_SILAN is not set
+/home/suh/template/linux-releases/linux-4.4/arch/powerpc/configs/44x/akebono_defconfig:80:# CONFIG_NET_VENDOR_SILAN is not set
+/home/suh/template/linux-releases/linux-4.4/arch/powerpc/configs/85xx/kmp204x_defconfig:146:# CONFIG_NET_VENDOR_SILAN is not set
+ 
+CONFIG_NET_VENDOR_SYNOPSYS (Kbuild):
+/home/suh/template/linux-releases/linux-4.4/drivers/net/ethernet/Makefile:80:obj-$(CONFIG_NET_VENDOR_SYNOPSYS) += synopsys/
+/home/suh/template/linux-releases/linux-4.4/arch/m68k/configs/hp300_defconfig:353:# CONFIG_NET_VENDOR_SYNOPSYS is not set
+/home/suh/template/linux-releases/linux-4.4/arch/m68k/configs/mvme147_defconfig:351:# CONFIG_NET_VENDOR_SYNOPSYS is not set
+/home/suh/template/linux-releases/linux-4.4/arch/m68k/configs/apollo_defconfig:352:# CONFIG_NET_VENDOR_SYNOPSYS is not set
+/home/suh/template/linux-releases/linux-4.4/arch/m68k/configs/mvme16x_defconfig:351:# CONFIG_NET_VENDOR_SYNOPSYS is not set
+/home/suh/template/linux-releases/linux-4.4/arch/m68k/configs/sun3_defconfig:349:# CONFIG_NET_VENDOR_SYNOPSYS is not set
+/home/suh/template/linux-releases/linux-4.4/arch/m68k/configs/atari_defconfig:363:# CONFIG_NET_VENDOR_SYNOPSYS is not set
+/home/suh/template/linux-releases/linux-4.4/arch/m68k/configs/sun3x_defconfig:349:# CONFIG_NET_VENDOR_SYNOPSYS is not set
+/home/suh/template/linux-releases/linux-4.4/arch/m68k/configs/q40_defconfig:362:# CONFIG_NET_VENDOR_SYNOPSYS is not set
+/home/suh/template/linux-releases/linux-4.4/arch/m68k/configs/amiga_defconfig:378:# CONFIG_NET_VENDOR_SYNOPSYS is not set
+/home/suh/template/linux-releases/linux-4.4/arch/m68k/configs/bvme6000_defconfig:351:# CONFIG_NET_VENDOR_SYNOPSYS is not set
+/home/suh/template/linux-releases/linux-4.4/arch/m68k/configs/multi_defconfig:418:# CONFIG_NET_VENDOR_SYNOPSYS is not set
+/home/suh/template/linux-releases/linux-4.4/arch/m68k/configs/mac_defconfig:372:# CONFIG_NET_VENDOR_SYNOPSYS is not set
+ 
+CONFIG_NET_VENDOR_WIZNET (Kbuild):
+/home/suh/template/linux-releases/linux-4.4/drivers/net/ethernet/Makefile:87:obj-$(CONFIG_NET_VENDOR_WIZNET) += wiznet/
+/home/suh/template/linux-releases/linux-4.4/arch/parisc/configs/generic-64bit_defconfig:140:# CONFIG_NET_VENDOR_WIZNET is not set
+/home/suh/template/linux-releases/linux-4.4/arch/m68k/configs/hp300_defconfig:355:# CONFIG_NET_VENDOR_WIZNET is not set
+/home/suh/template/linux-releases/linux-4.4/arch/m68k/configs/mvme147_defconfig:353:# CONFIG_NET_VENDOR_WIZNET is not set
+/home/suh/template/linux-releases/linux-4.4/arch/m68k/configs/apollo_defconfig:354:# CONFIG_NET_VENDOR_WIZNET is not set
+/home/suh/template/linux-releases/linux-4.4/arch/m68k/configs/mvme16x_defconfig:353:# CONFIG_NET_VENDOR_WIZNET is not set
+/home/suh/template/linux-releases/linux-4.4/arch/m68k/configs/sun3_defconfig:351:# CONFIG_NET_VENDOR_WIZNET is not set
+/home/suh/template/linux-releases/linux-4.4/arch/m68k/configs/atari_defconfig:365:# CONFIG_NET_VENDOR_WIZNET is not set
+/home/suh/template/linux-releases/linux-4.4/arch/m68k/configs/sun3x_defconfig:351:# CONFIG_NET_VENDOR_WIZNET is not set
+/home/suh/template/linux-releases/linux-4.4/arch/m68k/configs/q40_defconfig:364:# CONFIG_NET_VENDOR_WIZNET is not set
+/home/suh/template/linux-releases/linux-4.4/arch/m68k/configs/amiga_defconfig:380:# CONFIG_NET_VENDOR_WIZNET is not set
+/home/suh/template/linux-releases/linux-4.4/arch/m68k/configs/bvme6000_defconfig:353:# CONFIG_NET_VENDOR_WIZNET is not set
+/home/suh/template/linux-releases/linux-4.4/arch/m68k/configs/multi_defconfig:420:# CONFIG_NET_VENDOR_WIZNET is not set
+/home/suh/template/linux-releases/linux-4.4/arch/m68k/configs/mac_defconfig:374:# CONFIG_NET_VENDOR_WIZNET is not set
+/home/suh/template/linux-releases/linux-4.4/arch/xtensa/configs/smp_lx200_defconfig:84:# CONFIG_NET_VENDOR_WIZNET is not set
+/home/suh/template/linux-releases/linux-4.4/arch/xtensa/configs/nommu_kc705_defconfig:80:# CONFIG_NET_VENDOR_WIZNET is not set
+/home/suh/template/linux-releases/linux-4.4/arch/xtensa/configs/audio_kc705_defconfig:81:# CONFIG_NET_VENDOR_WIZNET is not set
+/home/suh/template/linux-releases/linux-4.4/arch/xtensa/configs/generic_kc705_defconfig:80:# CONFIG_NET_VENDOR_WIZNET is not set
+/home/suh/template/linux-releases/linux-4.4/arch/arc/configs/axs101_defconfig:57:# CONFIG_NET_VENDOR_WIZNET is not set
+/home/suh/template/linux-releases/linux-4.4/arch/arc/configs/vdk_hs38_smp_defconfig:55:# CONFIG_NET_VENDOR_WIZNET is not set
+/home/suh/template/linux-releases/linux-4.4/arch/arc/configs/vdk_hs38_defconfig:53:# CONFIG_NET_VENDOR_WIZNET is not set
+/home/suh/template/linux-releases/linux-4.4/arch/arc/configs/axs103_smp_defconfig:63:# CONFIG_NET_VENDOR_WIZNET is not set
+/home/suh/template/linux-releases/linux-4.4/arch/arc/configs/nsimosci_hs_smp_defconfig:58:# CONFIG_NET_VENDOR_WIZNET is not set
+/home/suh/template/linux-releases/linux-4.4/arch/arc/configs/axs103_defconfig:62:# CONFIG_NET_VENDOR_WIZNET is not set
+/home/suh/template/linux-releases/linux-4.4/arch/arc/configs/tb10x_defconfig:61:# CONFIG_NET_VENDOR_WIZNET is not set
+/home/suh/template/linux-releases/linux-4.4/arch/mips/configs/sead3_defconfig:51:# CONFIG_NET_VENDOR_WIZNET is not set
+/home/suh/template/linux-releases/linux-4.4/arch/mips/configs/maltasmvp_defconfig:130:# CONFIG_NET_VENDOR_WIZNET is not set
+/home/suh/template/linux-releases/linux-4.4/arch/mips/configs/rt305x_defconfig:96:# CONFIG_NET_VENDOR_WIZNET is not set
+/home/suh/template/linux-releases/linux-4.4/arch/mips/configs/maltasmvp_eva_defconfig:133:# CONFIG_NET_VENDOR_WIZNET is not set
+/home/suh/template/linux-releases/linux-4.4/arch/mips/configs/ls1b_defconfig:60:# CONFIG_NET_VENDOR_WIZNET is not set
+/home/suh/template/linux-releases/linux-4.4/arch/mips/configs/sead3micro_defconfig:52:# CONFIG_NET_VENDOR_WIZNET is not set
+/home/suh/template/linux-releases/linux-4.4/arch/mips/configs/nlm_xlp_defconfig:402:# CONFIG_NET_VENDOR_WIZNET is not set
+/home/suh/template/linux-releases/linux-4.4/arch/mips/configs/xway_defconfig:92:# CONFIG_NET_VENDOR_WIZNET is not set
+/home/suh/template/linux-releases/linux-4.4/arch/mips/configs/malta_qemu_32r6_defconfig:128:# CONFIG_NET_VENDOR_WIZNET is not set
+/home/suh/template/linux-releases/linux-4.4/arch/mips/configs/mips_paravirt_defconfig:60:# CONFIG_NET_VENDOR_WIZNET is not set
+/home/suh/template/linux-releases/linux-4.4/arch/mips/configs/cavium_octeon_defconfig:102:# CONFIG_NET_VENDOR_WIZNET is not set
+/home/suh/template/linux-releases/linux-4.4/arch/mips/configs/loongson3_defconfig:209:# CONFIG_NET_VENDOR_WIZNET is not set
+/home/suh/template/linux-releases/linux-4.4/arch/mips/configs/ci20_defconfig:72:# CONFIG_NET_VENDOR_WIZNET is not set
+/home/suh/template/linux-releases/linux-4.4/arch/powerpc/configs/44x/akebono_defconfig:88:# CONFIG_NET_VENDOR_WIZNET is not set
+/home/suh/template/linux-releases/linux-4.4/arch/powerpc/configs/85xx/kmp204x_defconfig:154:# CONFIG_NET_VENDOR_WIZNET is not set
+/home/suh/template/linux-releases/linux-4.4/arch/arm/configs/lpc18xx_defconfig:90:# CONFIG_NET_VENDOR_WIZNET is not set
+/home/suh/template/linux-releases/linux-4.4/arch/arm/configs/sunxi_defconfig:61:# CONFIG_NET_VENDOR_WIZNET is not set
+/home/suh/template/linux-releases/linux-4.4/arch/arm/configs/efm32_defconfig:68:# CONFIG_NET_VENDOR_WIZNET is not set
+/home/suh/template/linux-releases/linux-4.4/arch/arm/configs/omap2plus_defconfig:176:# CONFIG_NET_VENDOR_WIZNET is not set
+/home/suh/template/linux-releases/linux-4.4/arch/arm/configs/sama5_defconfig:94:# CONFIG_NET_VENDOR_WIZNET is not set
+/home/suh/template/linux-releases/linux-4.4/arch/arm/configs/shmobile_defconfig:83:# CONFIG_NET_VENDOR_WIZNET is not set
+/home/suh/template/linux-releases/linux-4.4/arch/arm/configs/axm55xx_defconfig:125:# CONFIG_NET_VENDOR_WIZNET is not set
+/home/suh/template/linux-releases/linux-4.4/arch/arm/configs/moxart_defconfig:76:# CONFIG_NET_VENDOR_WIZNET is not set
+/home/suh/template/linux-releases/linux-4.4/arch/arm/configs/clps711x_defconfig:54:# CONFIG_NET_VENDOR_WIZNET is not set
+/home/suh/template/linux-releases/linux-4.4/arch/arm/configs/vt8500_v6_v7_defconfig:44:# CONFIG_NET_VENDOR_WIZNET is not set
+ 
+CONFIG_PCI_LABEL (Kbuild):
+/home/suh/template/linux-releases/linux-4.4/drivers/pci/Makefile:51:obj-$(CONFIG_PCI_LABEL) += pci-label.o
+ 
+CONFIG_PCI_REALLOC_ENABLE_AUTO (C-Code):
+/home/suh/template/linux-releases/linux-4.4/drivers/pci/setup-bus.c:1637:#if defined(CONFIG_PCI_IOV) && defined(CONFIG_PCI_REALLOC_ENABLE_AUTO)
+/home/suh/template/linux-releases/linux-4.4/arch/mips/configs/nlm_xlp_defconfig:57:CONFIG_PCI_REALLOC_ENABLE_AUTO=y
+/home/suh/template/linux-releases/linux-4.4/arch/mips/configs/db1xxx_defconfig:36:CONFIG_PCI_REALLOC_ENABLE_AUTO=y
+ 
+CONFIG_PCMCIA_PROBE (C-Code):
+/home/suh/template/linux-releases/linux-4.4/drivers/pcmcia/rsrc_nonstatic.c:45:#ifdef CONFIG_PCMCIA_PROBE
+/home/suh/template/linux-releases/linux-4.4/drivers/pcmcia/rsrc_nonstatic.c:184:#ifdef CONFIG_PCMCIA_PROBE
+/home/suh/template/linux-releases/linux-4.4/drivers/pcmcia/rsrc_nonstatic.c:450:#ifdef CONFIG_PCMCIA_PROBE
+/home/suh/template/linux-releases/linux-4.4/drivers/pcmcia/rsrc_nonstatic.c:530:#else /* CONFIG_PCMCIA_PROBE */
+/home/suh/template/linux-releases/linux-4.4/drivers/pcmcia/rsrc_nonstatic.c:554:#endif /* CONFIG_PCMCIA_PROBE */
+/home/suh/template/linux-releases/linux-4.4/drivers/pcmcia/rsrc_nonstatic.c:913:#ifdef CONFIG_PCMCIA_PROBE
+/home/suh/template/linux-releases/linux-4.4/drivers/pcmcia/pcmcia_resource.c:751:#ifdef CONFIG_PCMCIA_PROBE
+/home/suh/template/linux-releases/linux-4.4/drivers/pcmcia/pcmcia_resource.c:810:#else /* CONFIG_PCMCIA_PROBE */
+/home/suh/template/linux-releases/linux-4.4/drivers/pcmcia/pcmcia_resource.c:823:#endif  /* CONFIG_PCMCIA_PROBE */
+ 
+CONFIG_PROC_CHILDREN (C-Code):
+/home/suh/template/linux-releases/linux-4.4/arch/m68k/configs/hp300_defconfig:419:CONFIG_PROC_CHILDREN=y
+/home/suh/template/linux-releases/linux-4.4/arch/m68k/configs/mvme147_defconfig:410:CONFIG_PROC_CHILDREN=y
+/home/suh/template/linux-releases/linux-4.4/arch/m68k/configs/apollo_defconfig:417:CONFIG_PROC_CHILDREN=y
+/home/suh/template/linux-releases/linux-4.4/arch/m68k/configs/mvme16x_defconfig:410:CONFIG_PROC_CHILDREN=y
+/home/suh/template/linux-releases/linux-4.4/arch/m68k/configs/sun3_defconfig:411:CONFIG_PROC_CHILDREN=y
+/home/suh/template/linux-releases/linux-4.4/arch/m68k/configs/atari_defconfig:439:CONFIG_PROC_CHILDREN=y
+/home/suh/template/linux-releases/linux-4.4/arch/m68k/configs/sun3x_defconfig:411:CONFIG_PROC_CHILDREN=y
+/home/suh/template/linux-releases/linux-4.4/arch/m68k/configs/q40_defconfig:432:CONFIG_PROC_CHILDREN=y
+/home/suh/template/linux-releases/linux-4.4/arch/m68k/configs/amiga_defconfig:459:CONFIG_PROC_CHILDREN=y
+/home/suh/template/linux-releases/linux-4.4/arch/m68k/configs/bvme6000_defconfig:410:CONFIG_PROC_CHILDREN=y
+/home/suh/template/linux-releases/linux-4.4/arch/m68k/configs/multi_defconfig:521:CONFIG_PROC_CHILDREN=y
+/home/suh/template/linux-releases/linux-4.4/arch/m68k/configs/mac_defconfig:441:CONFIG_PROC_CHILDREN=y
+/home/suh/template/linux-releases/linux-4.4/fs/proc/array.c:595:#ifdef CONFIG_PROC_CHILDREN
+/home/suh/template/linux-releases/linux-4.4/fs/proc/array.c:718:#endif /* CONFIG_PROC_CHILDREN */
+/home/suh/template/linux-releases/linux-4.4/fs/proc/base.c:3105:#ifdef CONFIG_PROC_CHILDREN
+ 
+CONFIG_RADIO_SI470X (Kbuild):
+/home/suh/template/linux-releases/linux-4.4/drivers/media/radio/Makefile:23:obj-$(CONFIG_RADIO_SI470X) += si470x/
+ 
+CONFIG_RAID_ATTRS (Kbuild):
+/home/suh/template/linux-releases/linux-4.4/drivers/scsi/Makefile:24:obj-$(CONFIG_RAID_ATTRS)	+= raid_class.o
+/home/suh/template/linux-releases/linux-4.4/arch/parisc/configs/a500_defconfig:91:CONFIG_RAID_ATTRS=m
+/home/suh/template/linux-releases/linux-4.4/arch/m68k/configs/hp300_defconfig:291:CONFIG_RAID_ATTRS=m
+/home/suh/template/linux-releases/linux-4.4/arch/m68k/configs/mvme147_defconfig:288:CONFIG_RAID_ATTRS=m
+/home/suh/template/linux-releases/linux-4.4/arch/m68k/configs/apollo_defconfig:291:CONFIG_RAID_ATTRS=m
+/home/suh/template/linux-releases/linux-4.4/arch/m68k/configs/mvme16x_defconfig:289:CONFIG_RAID_ATTRS=m
+/home/suh/template/linux-releases/linux-4.4/arch/m68k/configs/sun3_defconfig:286:CONFIG_RAID_ATTRS=m
+/home/suh/template/linux-releases/linux-4.4/arch/m68k/configs/atari_defconfig:299:CONFIG_RAID_ATTRS=m
+/home/suh/template/linux-releases/linux-4.4/arch/m68k/configs/sun3x_defconfig:286:CONFIG_RAID_ATTRS=m
+/home/suh/template/linux-releases/linux-4.4/arch/m68k/configs/q40_defconfig:296:CONFIG_RAID_ATTRS=m
+/home/suh/template/linux-releases/linux-4.4/arch/m68k/configs/amiga_defconfig:304:CONFIG_RAID_ATTRS=m
+/home/suh/template/linux-releases/linux-4.4/arch/m68k/configs/bvme6000_defconfig:289:CONFIG_RAID_ATTRS=m
+/home/suh/template/linux-releases/linux-4.4/arch/m68k/configs/multi_defconfig:321:CONFIG_RAID_ATTRS=m
+/home/suh/template/linux-releases/linux-4.4/arch/m68k/configs/mac_defconfig:298:CONFIG_RAID_ATTRS=m
+/home/suh/template/linux-releases/linux-4.4/arch/xtensa/configs/iss_defconfig:314:# CONFIG_RAID_ATTRS is not set
+/home/suh/template/linux-releases/linux-4.4/arch/tile/configs/tilepro_defconfig:303:CONFIG_RAID_ATTRS=m
+/home/suh/template/linux-releases/linux-4.4/arch/tile/configs/tilegx_defconfig:172:CONFIG_RAID_ATTRS=m
+/home/suh/template/linux-releases/linux-4.4/arch/s390/configs/gcov_defconfig:361:CONFIG_RAID_ATTRS=m
+/home/suh/template/linux-releases/linux-4.4/arch/s390/configs/performance_defconfig:361:CONFIG_RAID_ATTRS=m
+/home/suh/template/linux-releases/linux-4.4/arch/s390/configs/default_defconfig:365:CONFIG_RAID_ATTRS=m
+/home/suh/template/linux-releases/linux-4.4/arch/sparc/configs/sparc64_defconfig:75:CONFIG_RAID_ATTRS=m
+/home/suh/template/linux-releases/linux-4.4/arch/mips/configs/cobalt_defconfig:29:CONFIG_RAID_ATTRS=y
+/home/suh/template/linux-releases/linux-4.4/arch/mips/configs/malta_kvm_defconfig:252:CONFIG_RAID_ATTRS=m
+/home/suh/template/linux-releases/linux-4.4/arch/mips/configs/malta_defconfig:244:CONFIG_RAID_ATTRS=m
+/home/suh/template/linux-releases/linux-4.4/arch/mips/configs/rm200_defconfig:223:CONFIG_RAID_ATTRS=m
+/home/suh/template/linux-releases/linux-4.4/arch/mips/configs/maltaup_xpa_defconfig:248:CONFIG_RAID_ATTRS=m
+/home/suh/template/linux-releases/linux-4.4/arch/mips/configs/jazz_defconfig:210:CONFIG_RAID_ATTRS=m
+/home/suh/template/linux-releases/linux-4.4/arch/mips/configs/nlm_xlp_defconfig:337:CONFIG_RAID_ATTRS=m
+/home/suh/template/linux-releases/linux-4.4/arch/mips/configs/ip22_defconfig:220:CONFIG_RAID_ATTRS=m
+/home/suh/template/linux-releases/linux-4.4/arch/mips/configs/malta_kvm_guest_defconfig:252:CONFIG_RAID_ATTRS=m
+/home/suh/template/linux-releases/linux-4.4/arch/mips/configs/sb1250_swarm_defconfig:61:CONFIG_RAID_ATTRS=m
+/home/suh/template/linux-releases/linux-4.4/arch/mips/configs/nlm_xlr_defconfig:313:CONFIG_RAID_ATTRS=m
+/home/suh/template/linux-releases/linux-4.4/arch/mips/configs/loongson3_defconfig:123:CONFIG_RAID_ATTRS=m
+/home/suh/template/linux-releases/linux-4.4/arch/mips/configs/ip32_defconfig:55:CONFIG_RAID_ATTRS=y
+/home/suh/template/linux-releases/linux-4.4/arch/powerpc/configs/ppc6xx_defconfig:388:CONFIG_RAID_ATTRS=m
+/home/suh/template/linux-releases/linux-4.4/arch/sh/configs/sh2007_defconfig:54:CONFIG_RAID_ATTRS=y
+ 
+CONFIG_RAID_ATTRS_MODULE (Kein Fund, Kbuild):
+ 
+CONFIG_RCU_TORTURE_TEST_SLOW_CLEANUP (C-Code):
+/home/suh/template/linux-releases/linux-4.4/kernel/rcu/tree.c:190:#ifdef CONFIG_RCU_TORTURE_TEST_SLOW_CLEANUP
+/home/suh/template/linux-releases/linux-4.4/kernel/rcu/tree.c:191:static int gp_cleanup_delay = CONFIG_RCU_TORTURE_TEST_SLOW_CLEANUP_DELAY;
+/home/suh/template/linux-releases/linux-4.4/kernel/rcu/tree.c:193:#else /* #ifdef CONFIG_RCU_TORTURE_TEST_SLOW_CLEANUP */
+/home/suh/template/linux-releases/linux-4.4/kernel/rcu/tree.c:195:#endif /* #else #ifdef CONFIG_RCU_TORTURE_TEST_SLOW_CLEANUP */
+/home/suh/template/linux-releases/linux-4.4/Documentation/kernel-parameters.txt:3094:			when CONFIG_RCU_TORTURE_TEST_SLOW_CLEANUP is set.
+/home/suh/template/linux-releases/linux-4.4/tools/testing/selftests/rcutorture/configs/rcu/CFcommon:3:CONFIG_RCU_TORTURE_TEST_SLOW_CLEANUP=y
+ 
+CONFIG_RCU_TORTURE_TEST_SLOW_INIT (C-Code):
+/home/suh/template/linux-releases/linux-4.4/kernel/rcu/tree.c:183:#ifdef CONFIG_RCU_TORTURE_TEST_SLOW_INIT
+/home/suh/template/linux-releases/linux-4.4/kernel/rcu/tree.c:184:static int gp_init_delay = CONFIG_RCU_TORTURE_TEST_SLOW_INIT_DELAY;
+/home/suh/template/linux-releases/linux-4.4/kernel/rcu/tree.c:186:#else /* #ifdef CONFIG_RCU_TORTURE_TEST_SLOW_INIT */
+/home/suh/template/linux-releases/linux-4.4/kernel/rcu/tree.c:188:#endif /* #else #ifdef CONFIG_RCU_TORTURE_TEST_SLOW_INIT */
+/home/suh/template/linux-releases/linux-4.4/Documentation/kernel-parameters.txt:3099:			effect when CONFIG_RCU_TORTURE_TEST_SLOW_INIT
+/home/suh/template/linux-releases/linux-4.4/tools/testing/selftests/rcutorture/configs/rcu/CFcommon:4:CONFIG_RCU_TORTURE_TEST_SLOW_INIT=y
+ 
+CONFIG_RCU_TORTURE_TEST_SLOW_PREINIT (C-Code):
+/home/suh/template/linux-releases/linux-4.4/kernel/rcu/tree.c:176:#ifdef CONFIG_RCU_TORTURE_TEST_SLOW_PREINIT
+/home/suh/template/linux-releases/linux-4.4/kernel/rcu/tree.c:177:static int gp_preinit_delay = CONFIG_RCU_TORTURE_TEST_SLOW_PREINIT_DELAY;
+/home/suh/template/linux-releases/linux-4.4/kernel/rcu/tree.c:179:#else /* #ifdef CONFIG_RCU_TORTURE_TEST_SLOW_PREINIT */
+/home/suh/template/linux-releases/linux-4.4/kernel/rcu/tree.c:181:#endif /* #else #ifdef CONFIG_RCU_TORTURE_TEST_SLOW_PREINIT */
+/home/suh/template/linux-releases/linux-4.4/Documentation/kernel-parameters.txt:3107:			when CONFIG_RCU_TORTURE_TEST_SLOW_PREINIT is set.
+/home/suh/template/linux-releases/linux-4.4/tools/testing/selftests/rcutorture/configs/rcu/CFcommon:5:CONFIG_RCU_TORTURE_TEST_SLOW_PREINIT=y
+ 
+CONFIG_RFKILL_REGULATOR (Kbuild):
+/home/suh/template/linux-releases/linux-4.4/net/rfkill/Makefile:8:obj-$(CONFIG_RFKILL_REGULATOR)	+= rfkill-regulator.o
+/home/suh/template/linux-releases/linux-4.4/arch/arm/configs/exynos_defconfig:46:CONFIG_RFKILL_REGULATOR=y
+ 
+CONFIG_RFKILL_REGULATOR_MODULE (Kein Fund, Kbuild):
+ 
+CONFIG_RTLLIB_CRYPTO_CCMP_MODULE (Kein Fund):
+ 
+CONFIG_RTLLIB_CRYPTO_WEP_MODULE (Kein Fund):
+ 
+CONFIG_SND_SST_IPC_ACPI (Kbuild):
+/home/suh/template/linux-releases/linux-4.4/sound/soc/intel/atom/sst/Makefile:7:obj-$(CONFIG_SND_SST_IPC_ACPI) += snd-intel-sst-acpi.o
+ 
+CONFIG_SND_SST_IPC_ACPI_MODULE (Kein Fund):
+ 
+CONFIG_SND_SUPPORT_OLD_API (C-Code):
+/home/suh/template/linux-releases/linux-4.4/sound/core/pcm_native.c:59:#ifdef CONFIG_SND_SUPPORT_OLD_API
+/home/suh/template/linux-releases/linux-4.4/sound/core/pcm_native.c:2784:#ifdef CONFIG_SND_SUPPORT_OLD_API
+/home/suh/template/linux-releases/linux-4.4/sound/core/pcm_native.c:3534:#ifdef CONFIG_SND_SUPPORT_OLD_API
+/home/suh/template/linux-releases/linux-4.4/sound/core/pcm_native.c:3635:#endif /* CONFIG_SND_SUPPORT_OLD_API */
+/home/suh/template/linux-releases/linux-4.4/arch/mips/configs/rbtx49xx_defconfig:79:# CONFIG_SND_SUPPORT_OLD_API is not set
+/home/suh/template/linux-releases/linux-4.4/arch/mips/configs/qi_lb60_defconfig:93:# CONFIG_SND_SUPPORT_OLD_API is not set
+/home/suh/template/linux-releases/linux-4.4/arch/powerpc/configs/ppc6xx_defconfig:814:# CONFIG_SND_SUPPORT_OLD_API is not set
+/home/suh/template/linux-releases/linux-4.4/arch/powerpc/configs/mpc86xx_defconfig:99:# CONFIG_SND_SUPPORT_OLD_API is not set
+/home/suh/template/linux-releases/linux-4.4/arch/powerpc/configs/mpc5200_defconfig:84:# CONFIG_SND_SUPPORT_OLD_API is not set
+/home/suh/template/linux-releases/linux-4.4/arch/powerpc/configs/85xx-hw.config:121:# CONFIG_SND_SUPPORT_OLD_API is not set
+/home/suh/template/linux-releases/linux-4.4/arch/powerpc/configs/86xx/mpc8641_hpcn_defconfig:96:# CONFIG_SND_SUPPORT_OLD_API is not set
+/home/suh/template/linux-releases/linux-4.4/arch/powerpc/configs/86xx/mpc8610_hpcd_defconfig:88:# CONFIG_SND_SUPPORT_OLD_API is not set
+/home/suh/template/linux-releases/linux-4.4/arch/blackfin/configs/PNAV-10_defconfig:93:# CONFIG_SND_SUPPORT_OLD_API is not set
+/home/suh/template/linux-releases/linux-4.4/arch/avr32/configs/atngw100mkii_evklcd101_defconfig:109:# CONFIG_SND_SUPPORT_OLD_API is not set
+/home/suh/template/linux-releases/linux-4.4/arch/avr32/configs/atstk1006_defconfig:110:# CONFIG_SND_SUPPORT_OLD_API is not set
+/home/suh/template/linux-releases/linux-4.4/arch/avr32/configs/atngw100_evklcd100_defconfig:107:# CONFIG_SND_SUPPORT_OLD_API is not set
+/home/suh/template/linux-releases/linux-4.4/arch/avr32/configs/atngw100_evklcd101_defconfig:106:# CONFIG_SND_SUPPORT_OLD_API is not set
+/home/suh/template/linux-releases/linux-4.4/arch/avr32/configs/atngw100_mrmt_defconfig:84:# CONFIG_SND_SUPPORT_OLD_API is not set
+/home/suh/template/linux-releases/linux-4.4/arch/avr32/configs/atngw100mkii_evklcd100_defconfig:110:# CONFIG_SND_SUPPORT_OLD_API is not set
+/home/suh/template/linux-releases/linux-4.4/arch/avr32/configs/hammerhead_defconfig:93:# CONFIG_SND_SUPPORT_OLD_API is not set
+/home/suh/template/linux-releases/linux-4.4/arch/avr32/configs/atstk1002_defconfig:107:# CONFIG_SND_SUPPORT_OLD_API is not set
+/home/suh/template/linux-releases/linux-4.4/arch/arm/configs/tegra_defconfig:200:# CONFIG_SND_SUPPORT_OLD_API is not set
+/home/suh/template/linux-releases/linux-4.4/arch/arm/configs/lpd270_defconfig:51:# CONFIG_SND_SUPPORT_OLD_API is not set
+/home/suh/template/linux-releases/linux-4.4/arch/arm/configs/zeus_defconfig:127:# CONFIG_SND_SUPPORT_OLD_API is not set
+/home/suh/template/linux-releases/linux-4.4/arch/arm/configs/omap1_defconfig:175:# CONFIG_SND_SUPPORT_OLD_API is not set
+/home/suh/template/linux-releases/linux-4.4/arch/arm/configs/am200epdkit_defconfig:82:# CONFIG_SND_SUPPORT_OLD_API is not set
+/home/suh/template/linux-releases/linux-4.4/arch/arm/configs/lpc32xx_defconfig:141:# CONFIG_SND_SUPPORT_OLD_API is not set
+/home/suh/template/linux-releases/linux-4.4/arch/sh/configs/sh7785lcr_32bit_defconfig:106:# CONFIG_SND_SUPPORT_OLD_API is not set
+/home/suh/template/linux-releases/linux-4.4/arch/sh/configs/se7724_defconfig:97:# CONFIG_SND_SUPPORT_OLD_API is not set
+/home/suh/template/linux-releases/linux-4.4/arch/sh/configs/edosk7760_defconfig:91:# CONFIG_SND_SUPPORT_OLD_API is not set
+ 
+CONFIG_STM_SOURCE_CONSOLE (Kbuild):
+/home/suh/template/linux-releases/linux-4.4/drivers/hwtracing/stm/Makefile:7:obj-$(CONFIG_STM_SOURCE_CONSOLE)	+= stm_console.o
+ 
+CONFIG_STM_SOURCE_CONSOLE_MODULE (Kein Fund, Kbuild):
+ 
+CONFIG_SYSCTL_EXCEPTION_TRACE (C-Code):
+/home/suh/template/linux-releases/linux-4.4/kernel/sysctl.c:1742:#ifdef CONFIG_SYSCTL_EXCEPTION_TRACE
+ 
+CONFIG_TRACEPOINT_BENCHMARK (Kbuild):
+/home/suh/template/linux-releases/linux-4.4/kernel/trace/Makefile:68:obj-$(CONFIG_TRACEPOINT_BENCHMARK) += trace_benchmark.o
+ 
+CONFIG_TRACER_SNAPSHOT (C-Code):
+/home/suh/template/linux-releases/linux-4.4/kernel/trace/trace_events_trigger.c:881:#ifdef CONFIG_TRACER_SNAPSHOT
+/home/suh/template/linux-releases/linux-4.4/kernel/trace/trace_events_trigger.c:964:#endif /* CONFIG_TRACER_SNAPSHOT */
+/home/suh/template/linux-releases/linux-4.4/kernel/trace/trace.c:626:#ifdef CONFIG_TRACER_SNAPSHOT
+/home/suh/template/linux-releases/linux-4.4/kernel/trace/trace.c:770:#endif /* CONFIG_TRACER_SNAPSHOT */
+/home/suh/template/linux-releases/linux-4.4/kernel/trace/trace.c:3740:#ifdef CONFIG_TRACER_SNAPSHOT
+/home/suh/template/linux-releases/linux-4.4/kernel/trace/trace.c:3771:#ifdef CONFIG_TRACER_SNAPSHOT
+/home/suh/template/linux-releases/linux-4.4/kernel/trace/trace.c:3804:#ifdef CONFIG_TRACER_SNAPSHOT
+/home/suh/template/linux-releases/linux-4.4/kernel/trace/trace.c:5298:#ifdef CONFIG_TRACER_SNAPSHOT
+/home/suh/template/linux-releases/linux-4.4/kernel/trace/trace.c:5460:#endif /* CONFIG_TRACER_SNAPSHOT */
+/home/suh/template/linux-releases/linux-4.4/kernel/trace/trace.c:5531:#ifdef CONFIG_TRACER_SNAPSHOT
+/home/suh/template/linux-releases/linux-4.4/kernel/trace/trace.c:5548:#endif /* CONFIG_TRACER_SNAPSHOT */
+/home/suh/template/linux-releases/linux-4.4/kernel/trace/trace.c:5971:#if defined(CONFIG_TRACER_SNAPSHOT) && defined(CONFIG_DYNAMIC_FTRACE)
+/home/suh/template/linux-releases/linux-4.4/kernel/trace/trace.c:6076:#endif /* defined(CONFIG_TRACER_SNAPSHOT) && defined(CONFIG_DYNAMIC_FTRACE) */
+/home/suh/template/linux-releases/linux-4.4/kernel/trace/trace.c:6155:#ifdef CONFIG_TRACER_SNAPSHOT
+/home/suh/template/linux-releases/linux-4.4/kernel/trace/trace.c:6803:#ifdef CONFIG_TRACER_SNAPSHOT
+/home/suh/template/linux-releases/linux-4.4/Documentation/trace/ftrace.txt:2634:CONFIG_TRACER_SNAPSHOT makes a generic snapshot feature
+/home/suh/template/linux-releases/linux-4.4/arch/s390/defconfig:144:CONFIG_TRACER_SNAPSHOT=y
+/home/suh/template/linux-releases/linux-4.4/arch/s390/defconfig:145:CONFIG_TRACER_SNAPSHOT_PER_CPU_SWAP=y
+ 
+CONFIG_TUN_VNET_CROSS_LE (C-Code):
+/home/suh/template/linux-releases/linux-4.4/drivers/net/tun.c:209:#ifdef CONFIG_TUN_VNET_CROSS_LE
+/home/suh/template/linux-releases/linux-4.4/drivers/net/tun.c:255:#endif /* CONFIG_TUN_VNET_CROSS_LE */
+/home/suh/template/linux-releases/linux-4.4/drivers/net/macvtap.c:53:#ifdef CONFIG_TUN_VNET_CROSS_LE
+/home/suh/template/linux-releases/linux-4.4/drivers/net/macvtap.c:99:#endif /* CONFIG_TUN_VNET_CROSS_LE */
+ 
+CONFIG_USB_KBD (Kbuild):
+/home/suh/template/linux-releases/linux-4.4/drivers/hid/usbhid/Makefile:10:obj-$(CONFIG_USB_KBD)		+= usbkbd.o
+/home/suh/template/linux-releases/linux-4.4/drivers/hid/Makefile:110:obj-$(CONFIG_USB_KBD)		+= usbhid/
+/home/suh/template/linux-releases/linux-4.4/arch/mips/configs/mtx1_defconfig:576:CONFIG_USB_KBD=m
+/home/suh/template/linux-releases/linux-4.4/arch/mips/configs/rm200_defconfig:301:CONFIG_USB_KBD=m
+/home/suh/template/linux-releases/linux-4.4/arch/mips/configs/fuloong2e_defconfig:183:CONFIG_USB_KBD=y
+/home/suh/template/linux-releases/linux-4.4/arch/mips/configs/gpr_defconfig:286:CONFIG_USB_KBD=m
+/home/suh/template/linux-releases/linux-4.4/arch/arm/configs/omap2plus_defconfig:342:CONFIG_USB_KBD=m
+/home/suh/template/linux-releases/linux-4.4/arch/arm/configs/spitz_defconfig:150:CONFIG_USB_KBD=m
+/home/suh/template/linux-releases/linux-4.4/arch/arm/configs/corgi_defconfig:156:CONFIG_USB_KBD=m
+ 
+CONFIG_USB_KBD_MODULE (Kein Fund, Kbuild):
+ 
+CONFIG_USB_MOUSE (Kbuild):
+/home/suh/template/linux-releases/linux-4.4/drivers/hid/usbhid/Makefile:11:obj-$(CONFIG_USB_MOUSE)		+= usbmouse.o
+/home/suh/template/linux-releases/linux-4.4/drivers/hid/Makefile:109:obj-$(CONFIG_USB_MOUSE)		+= usbhid/
+/home/suh/template/linux-releases/linux-4.4/arch/mips/configs/mtx1_defconfig:577:CONFIG_USB_MOUSE=m
+/home/suh/template/linux-releases/linux-4.4/arch/mips/configs/rm200_defconfig:302:CONFIG_USB_MOUSE=m
+/home/suh/template/linux-releases/linux-4.4/arch/mips/configs/fuloong2e_defconfig:184:CONFIG_USB_MOUSE=y
+/home/suh/template/linux-releases/linux-4.4/arch/mips/configs/gpr_defconfig:287:CONFIG_USB_MOUSE=m
+/home/suh/template/linux-releases/linux-4.4/arch/arm/configs/omap2plus_defconfig:343:CONFIG_USB_MOUSE=m
+/home/suh/template/linux-releases/linux-4.4/arch/arm/configs/spitz_defconfig:151:CONFIG_USB_MOUSE=m
+/home/suh/template/linux-releases/linux-4.4/arch/arm/configs/corgi_defconfig:157:CONFIG_USB_MOUSE=m
+ 
+CONFIG_USB_MOUSE_MODULE (Kein Fund, Kbuild):
+ 
+CONFIG_VIDEOBUF2_CORE (Kbuild):
+/home/suh/template/linux-releases/linux-4.4/drivers/media/v4l2-core/Makefile:36:obj-$(CONFIG_VIDEOBUF2_CORE) += videobuf2-core.o videobuf2-v4l2.o
+ 
+CONFIG_VIDEOBUF2_CORE_MODULE (Kein Fund, Kbuild):
+ 
+CONFIG_VIDEOBUF2_MEMOPS (Kbuild):
+/home/suh/template/linux-releases/linux-4.4/drivers/media/v4l2-core/Makefile:37:obj-$(CONFIG_VIDEOBUF2_MEMOPS) += videobuf2-memops.o
+ 
+CONFIG_VIDEOBUF2_MEMOPS_MODULE (Kein Fund, Kbuild):
+ 
+CONFIG_VIDEO_FIXED_MINOR_RANGES (C-Code):
+/home/suh/template/linux-releases/linux-4.4/drivers/media/v4l2-core/v4l2-dev.c:103:#ifdef CONFIG_VIDEO_FIXED_MINOR_RANGES
+/home/suh/template/linux-releases/linux-4.4/drivers/media/v4l2-core/v4l2-dev.c:820:#ifdef CONFIG_VIDEO_FIXED_MINOR_RANGES
+/home/suh/template/linux-releases/linux-4.4/drivers/media/v4l2-core/v4l2-dev.c:856:#ifdef CONFIG_VIDEO_FIXED_MINOR_RANGES
+/home/suh/template/linux-releases/linux-4.4/Documentation/devices.txt:1505:		CONFIG_VIDEO_FIXED_MINOR_RANGES (default n)
+/home/suh/template/linux-releases/linux-4.4/Documentation/DocBook/media/v4l/common.xml:48:option CONFIG_VIDEO_FIXED_MINOR_RANGES. In that case minor numbers are
+/home/suh/template/linux-releases/linux-4.4/Documentation/DocBook/media/v4l/common.xml:71:CONFIG_VIDEO_FIXED_MINOR_RANGES kernel option in order to be able to correctly
+ 
+CONFIG_VIDEO_SAMSUNG_S5P_TV (Kbuild):
+/home/suh/template/linux-releases/linux-4.4/drivers/media/platform/Makefile:32:obj-$(CONFIG_VIDEO_SAMSUNG_S5P_TV)	+= s5p-tv/
+ 
+CONFIG_W1_CON (C-Code):
+/home/suh/template/linux-releases/linux-4.4/drivers/w1/w1_netlink.c:31:#if defined(CONFIG_W1_CON) && (defined(CONFIG_CONNECTOR) || (defined(CONFIG_CONNECTOR_MODULE) && defined(CONFIG_W1_MODULE)))
+ 
+CONFIG_XEN_HAVE_VPMU (C-Code):
+/home/suh/template/linux-releases/linux-4.4/drivers/xen/sys-hypervisor.c:23:#ifdef CONFIG_XEN_HAVE_VPMU
+/home/suh/template/linux-releases/linux-4.4/drivers/xen/sys-hypervisor.c:374:#ifdef CONFIG_XEN_HAVE_VPMU
+/home/suh/template/linux-releases/linux-4.4/drivers/xen/sys-hypervisor.c:516:#ifdef CONFIG_XEN_HAVE_VPMU
+/home/suh/template/linux-releases/linux-4.4/drivers/xen/sys-hypervisor.c:541:#ifdef CONFIG_XEN_HAVE_VPMU
