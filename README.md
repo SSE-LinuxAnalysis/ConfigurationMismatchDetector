@@ -1,4 +1,4 @@
-Configuration Mismatch Detection
+Detection of Configuration Mismatches
 ================================
 
 Tool
