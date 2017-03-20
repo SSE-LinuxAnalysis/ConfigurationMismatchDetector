@@ -1,0 +1,10 @@
+Used Kconfig variables per space
+
+Results:
+- Total No. of Kconfig Variables: 15641 [100%]
+- Used in Code (and in Kbuild): 6460 [41,3%]
+- Used in Kbuild (and in Code): 10939 [69,94%]
+- Used in Code + Kbuild: 2925 [18,7%]
+- Used only in Kconfig: 1167 [7,46%]
+- Used only in Code: 3535 [22,6%]
+- Used only in Kbuild: 8014 [51,24%]
