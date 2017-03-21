@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project name="SpaceLocator" default="jar" basedir=".">
+	
+	<!-- Settings -->
+	<property name="src.dir" value="src"/>
+	<property name="lib.dir" value="lib"/>
+	<property name="build.base.dir" value="build"/>
+	<property name="build.classes.dir" value="${build.base.dir}/classes"/>
+	<property name="build.jar.dir" value="${build.base.dir}/jar"/>
+	<property name="javacSource" value="1.8"/>
+	<property name="javacTarget" value="1.8"/>
+	
+	<path id ="includes">
+	    <fileset dir="${lib.dir}" includes="**/*.jar"/>
+	</path>
+	
+	<!-- Targets  -->
+	<target name="init">
+      <!-- Delete generated folders -->
+		  <delete dir="${build.base.dir}"/>
+		
+		   <!-- Create folders -->
+       <mkdir dir="${build.base.dir}"/>
+		   <mkdir dir="${build.classes.dir}"/>
+		   <mkdir dir="${build.jar.dir}"/>
+	</target>
+	
+	<!-- Compile all files without test classes -->
+	<target name="compile" depends="init">
+		  <javac srcdir="${src.dir}" debug="true" destdir="${build.classes.dir}" includeAntRuntime="no" failonerror="true" source="${javacSource}" target="${javacTarget}" encoding="iso-8859-1">
+		  	  <exclude name="**/package-info.java"/>
+		  	  <classpath refid="includes" />	
+		  </javac>
+  </target>
+	
+	<!-- Creates a jar file -->
+	<target name="jar" depends="compile">
+		  <jar destfile="${build.jar.dir}/${ant.project.name}.jar" basedir="${build.classes.dir}">
+			    <zipgroupfileset dir="lib" includes="*.jar" excludes="*-javadoc.jar" />
+		  	  <manifest>
+    	        <attribute name="Main-Class" value="net.ssehub.configmismatches.spaces.Main"/>
+		  	  </manifest>
+		  </jar>
+  </target>
+</project>

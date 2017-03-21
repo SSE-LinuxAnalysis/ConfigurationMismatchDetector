@@ -6,7 +6,9 @@ import java.lang.reflect.Constructor;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
+import java.text.DateFormat;
 import java.text.NumberFormat;
+import java.util.Date;
 import java.util.HashSet;
 import java.util.Set;
 
@@ -21,11 +23,18 @@ import net.ssehub.configmismatches.spaces.io.VariableReader;
  */
 public class Main {
     
-    private static final String KCONFIG_FILE_PATTERN = "(?iu)Kconfig.*";
-    private static final String CODE_FILE_PATTERN = ".*\\.(c|h|S)";
-    private static final String MAKE_FILE_PATTERN = "(Makefile|Kbuild)";
-    private static final String DEFAULT_CODE_FILE_PATTERN = "(?iu)(" + CODE_FILE_PATTERN + "|" + MAKE_FILE_PATTERN + ")";
-
+    private static final String UNIX_IGNORE_CASE = "(?iu)";
+    /**
+     * Both kind of separators to make input and system path separator platform independent.
+     */
+    private static final String PATH_SEPARATOR = "(/|\\\\)";
+    private static final String KCONFIG_FILE_PATTERN = UNIX_IGNORE_CASE + "Kconfig.*";
+    private static final String CODE_FILE_PATTERN = UNIX_IGNORE_CASE + ".*\\.(c|h|S)";
+    private static final String MAKE_FILE_PATTERN = UNIX_IGNORE_CASE + "(Makefile|Kbuild)";
+    private static final String EXCLUSION_PATH_PATTERN = UNIX_IGNORE_CASE + PATH_SEPARATOR
+        + "?(Documentation|samples|scripts)" + PATH_SEPARATOR + ".*";
+//    private static final String DEFAULT_CODE_FILE_PATTERN = "(?iu)(" + CODE_FILE_PATTERN + "|" + MAKE_FILE_PATTERN + ")";
+    
     /**
      * Starts the program.
      * @param args Parameters of this program:
@@ -34,6 +43,7 @@ public class Main {
      *   <li>Optional, the Kconfig file pattern (as Java RegEx) .</li>
      *   <li>Optional, if specified the code file pattern (as one RegEx) to consider.</li>
      *   <li>Optional, if specified the Kbuild file pattern (as one RegEx) to consider.</li>
+     *   <li>Optional, path exclusion filter (e.g. do not consider Documentation).</li>
      * </ol>
      */
     public static void main(String[] args) {
@@ -42,27 +52,43 @@ public class Main {
             String kconfigPattern = args.length > 1 ? args[1] : KCONFIG_FILE_PATTERN;
             String codePattern = args.length > 2 ? args[2] : CODE_FILE_PATTERN;
             String makePattern = args.length > 3 ? args[3] : MAKE_FILE_PATTERN;
-            System.out.println(rootFolder);
-            analyze(rootFolder, kconfigPattern, codePattern ,makePattern);
+            String exlusionPattern = args.length > 4 ? args[4] : EXCLUSION_PATH_PATTERN;
+            DateFormat df = DateFormat.getDateTimeInstance();
+            String formattedDate = df.format(new Date ());
+            System.out.println("Start parameters:");
+            System.out.println("Program started: " + formattedDate);
+            System.out.println("Path: " + rootFolder);
+            System.out.println("Kconfig file pattern: " + kconfigPattern);
+            System.out.println("Code file pattern: " + codePattern);
+            System.out.println("Kbuild file pattern: " + makePattern);
+            System.out.println("Path exclusion pattern: " + exlusionPattern);
+            analyze(rootFolder, kconfigPattern, codePattern, makePattern, exlusionPattern);
         } else {
             System.err.println("Error: At least one parameter must be specfied:");
             System.err.println("1) Specification of root folder to analyze");
             System.err.println("2) Optional file pattern (Java RegEx), which Kconfig files shall be analysed.");
             System.err.println("3) Optional file pattern (Java RegEx), which code files shall be analysed.");
-            System.err.println("4) Optional file pattern (Java RegEx), which Kbuild files shall be analysed.");
+            System.err.println("4) path exclusion filter (e.g. do not consider Documentation).");
         }
     }
     
-    private static void analyze(String rootFolder, String kconfigPattern, String codePattern, String makePattern) {
+    private static void analyze(String rootFolder, String kconfigPattern, String codePattern, String makePattern,
+        String exlusionPattern) {
+        
+        System.out.println("\nLog:");
+        
         // First iteration: list all files
         String filePattern = "(" + kconfigPattern + "|" + codePattern + "|" + makePattern + ")";
         Path rootPath = Paths.get(rootFolder);
         Set<File> files = new HashSet<File>();
         System.out.println("Step 1 (of 4): Collecting files");
         try {
-            Files.walk(rootPath).map(f -> f.toFile())
+            // All folders, except for Documentation etc.
+            Files.walk(rootPath).filter(p -> !rootPath.relativize(p).toString().matches(exlusionPattern))
+                .map(f -> f.toFile())
+                // Collect all Kconfig, code, and Kbuild files
                 .filter(f -> !f.isDirectory() && f.getName().matches(filePattern))
-                    .forEach(files::add);
+                .forEach(files::add);
         } catch (IOException e) {
             // TODO Auto-generated catch block
             e.printStackTrace();
@@ -76,18 +102,18 @@ public class Main {
         // Third iteration: Collect variables from code
         System.out.println("Step 3 (of 4): Parsing code files");
         Set<String> codeVariables = extractVariables(codePattern, files, CodeVariableReader.class);
-        codeVariables = intersection(codeVariables, kconfigVariables);
+        codeVariables = intersection(codeVariables, kconfigVariables, "code files");
         
         // Forth iteration: Collect variables from Kbuild
         System.out.println("Step 4 (of 4): Parsing Kbuild files");
         Set<String> kbuildVariables = extractVariables(makePattern, files, CodeVariableReader.class);
-        kbuildVariables = intersection(kbuildVariables, kconfigVariables);
+        kbuildVariables = intersection(kbuildVariables, kconfigVariables, "Kbuild files");
         
         // Print statistics
         int nKconfigVars = kconfigVariables.size();
         int nCodeVars = codeVariables.size();
         int nKbuildVars = kbuildVariables.size();
-        Set<String> kbuildAndCodeVars = intersection(kbuildVariables, codeVariables);
+        Set<String> kbuildAndCodeVars = intersection(kbuildVariables, codeVariables, null);
         int nKbuildAndCodeVars = kbuildAndCodeVars.size();
         kconfigVariables.removeAll(codeVariables);
         kconfigVariables.removeAll(kbuildVariables);
@@ -99,7 +125,7 @@ public class Main {
         onlyKbuildVariables.removeAll(codeVariables);
         int nOnlyKbuildVariables = onlyKbuildVariables.size();
         
-        System.out.println("\n\nResults:");
+        System.out.println("\nResults (Variables):");
         System.out.println("- Total No. of Kconfig Variables: " + percentageUsage(nKconfigVars, nKconfigVars));
         System.out.println("- Used in Code (and in Kbuild): " + percentageUsage(nCodeVars, nKconfigVars));
         System.out.println("- Used in Kbuild (and in Code): " + percentageUsage(nKbuildVars, nKconfigVars));
@@ -141,13 +167,22 @@ public class Main {
         return codeVariables;
     }
     
-    private static Set<String> intersection(Set<String> usedVariables, Set<String> definedVariables) {
+    /**
+     * Returns the intersection of both sets, without modifying the sets.
+     * @param usedVariables First set (usually Kbuild of code variables)
+     * @param definedVariables Second set (Kconfig variables)
+     * @param logText if <tt>null</tt> nothing will be printed, otherwise this method logs how many variables have been
+     *     removed.
+     * @return The inersection of both sets.
+     */
+    private static Set<String> intersection(Set<String> usedVariables, Set<String> definedVariables, String logText) {
         Set<String> result = new HashSet<>(usedVariables);
         result.retainAll(definedVariables);
         
-        int diff = usedVariables.size() - result.size();
-        System.out.println(diff + " undefined variables were removed.");
-        
+        if (null != logText) {
+            int diff = usedVariables.size() - result.size();
+            System.out.println(diff + " undefined variables were removed from " + logText + ".");
+        }
         return result;
     }
 
