@@ -17,9 +17,21 @@ This tool was used to calculate the distribution of spaces in which the Kconfig
 variables have been used. The `net.ssehub.configmismatches.spaces.Main` class
 contains the main method that launches the analysis.
 
+### Pilztaker Script
+The folder `pilztaker` contains the start script for
+[pilztaker](https://github.com/SSE-LinuxAnalysis/pilztaker) (a wrapper for
+[Undertaker v1.6.1](http://vamos.informatik.uni-erlangen.de/trac/undertaker/)),
+which was used to generate the list of conditional code blocks.
+
 ## Results
 The results of our manual analysis of the output from the
-ConfigurationMismatchDetector tool can be found in the `results/` folder.
-The file `Configuration Mismatch Analysis.xlsx` is the main sheet that
-contains our results.
+ConfigurationMismatchDetector tool can be found in the `results/` folder. This
+folder contains the following results:
+* `Configuration Mismatch Analysis.xlsx` is the main sheet that contains the results of our manual analysis.
+* `Involved Spaces.txt` is the result of `SpaceLocator` and lists how many Kconfig variables are also used in code and Kbuild files.
+* `Conditional Blocks.csv` contains a list of all cpp dependent conditional code blocks.
+* The sub folders contain additional raw data.
+
+## Kernel
+For the analysis, we used version [4.4.1 of the Linux kernel](https://cdn.kernel.org/pub/linux/kernel/v4.x/linux-4.4.1.tar.xz).
 
