@@ -21,7 +21,11 @@ contains the main method that launches the analysis.
 The folder `pilztaker` contains the start script for
 [pilztaker](https://github.com/SSE-LinuxAnalysis/pilztaker) (a wrapper for
 [Undertaker v1.6.1](http://vamos.informatik.uni-erlangen.de/trac/undertaker/)),
-which was used to generate the list of conditional code blocks.
+which was used to generate the list of conditional code blocks. Please note that
+we excluded 7 files from the analysis, which could not be handled by the parser:
+* `include/linux/skbuff.h`
+* `arch/(sh | sparc | tile | x86 | mips)/include/asm/pgtable-64.h`
+* `arch/x86/kernel/espfix_64.c`
 
 ## Results
 The results of our manual analysis of the output from the
