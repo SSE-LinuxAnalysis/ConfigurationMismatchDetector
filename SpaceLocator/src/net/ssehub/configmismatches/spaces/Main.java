@@ -22,18 +22,41 @@ import net.ssehub.configmismatches.spaces.io.VariableReader;
  *
  */
 public class Main {
-    
+    // Important RegEx commands
+    /**
+     * Case insensitve for unicode.
+     * @see <a href="https://blogs.oracle.com/xuemingshen/entry/case_insensitive_matching_in_java">
+     * Case-Insensitive Matching in Java RegEx</a>
+     */
     private static final String UNIX_IGNORE_CASE = "(?iu)";
+    
+    /**
+     * Enable multiline mode.
+     * @see <a href=http://docs.oracle.com/javase/7/docs/api/java/util/regex/Pattern.html#MULTILINE">
+     * Java API: RegEx pattern (MULTILINE) </a>
+     */
+    private static final String MULTILINE_MODE = "(?m)";
+    
+    /**
+     * Enable multiline mode.
+     * @see <a href=http://docs.oracle.com/javase/7/docs/api/java/util/regex/Pattern.html#MULTILINE">
+     * Java API: RegEx pattern (MULTILINE) </a>
+     */
+    
+    // Variable detection patterns    
+    private static final String KCONFIG_VAR_PATTERN = MULTILINE_MODE + "^(.*config) (.*)$";
+    private static final String VARIABLE_IDENTIFIER_PATTERN = "(\\p{Alnum}|_)";
+    private static final String CODE_VAR_PATTERN = MULTILINE_MODE + "(CONFIG_)(" + VARIABLE_IDENTIFIER_PATTERN + "+)";
+    
     /**
      * Both kind of separators to make input and system path separator platform independent.
      */
     private static final String PATH_SEPARATOR = "(/|\\\\)";
     private static final String KCONFIG_FILE_PATTERN = UNIX_IGNORE_CASE + "Kconfig.*";
     private static final String CODE_FILE_PATTERN = UNIX_IGNORE_CASE + ".*\\.(c|h|S)";
-    private static final String MAKE_FILE_PATTERN = UNIX_IGNORE_CASE + "(Makefile|Kbuild)";
+    private static final String MAKE_FILE_PATTERN = UNIX_IGNORE_CASE + "(Makefile|Kbuild).*";
     private static final String EXCLUSION_PATH_PATTERN = UNIX_IGNORE_CASE + PATH_SEPARATOR
         + "?(Documentation|samples|scripts)" + PATH_SEPARATOR + ".*";
-//    private static final String DEFAULT_CODE_FILE_PATTERN = "(?iu)(" + CODE_FILE_PATTERN + "|" + MAKE_FILE_PATTERN + ")";
     
     /**
      * Starts the program.
@@ -62,6 +85,8 @@ public class Main {
             System.out.println("Code file pattern: " + codePattern);
             System.out.println("Kbuild file pattern: " + makePattern);
             System.out.println("Path exclusion pattern: " + exlusionPattern);
+            System.out.println("Detection pattern for variables in Kconfig: " + KCONFIG_VAR_PATTERN);
+            System.out.println("Detection pattern for variables in code/Kbuild: " + CODE_VAR_PATTERN);
             analyze(rootFolder, kconfigPattern, codePattern, makePattern, exlusionPattern);
         } else {
             System.err.println("Error: At least one parameter must be specfied:");
@@ -97,16 +122,17 @@ public class Main {
         
         // Second iteration: Collect variables from all Kconfig
         System.out.println("Step 2 (of 4): Parsing Kconfig files");
-        Set<String> kconfigVariables = extractVariables(kconfigPattern, files, KconfigVariableReader.class);
+        Set<String> kconfigVariables = extractVariables(kconfigPattern, files, KconfigVariableReader.class,
+            KCONFIG_VAR_PATTERN);
         
         // Third iteration: Collect variables from code
         System.out.println("Step 3 (of 4): Parsing code files");
-        Set<String> codeVariables = extractVariables(codePattern, files, CodeVariableReader.class);
+        Set<String> codeVariables = extractVariables(codePattern, files, CodeVariableReader.class, CODE_VAR_PATTERN);
         codeVariables = intersection(codeVariables, kconfigVariables, "code files");
         
         // Forth iteration: Collect variables from Kbuild
         System.out.println("Step 4 (of 4): Parsing Kbuild files");
-        Set<String> kbuildVariables = extractVariables(makePattern, files, CodeVariableReader.class);
+        Set<String> kbuildVariables = extractVariables(makePattern, files, CodeVariableReader.class, CODE_VAR_PATTERN);
         kbuildVariables = intersection(kbuildVariables, kconfigVariables, "Kbuild files");
         
         // Print statistics
@@ -136,7 +162,7 @@ public class Main {
     }
 
     protected static Set<String> extractVariables(String filePattern, Set<File> files,
-        Class<? extends VariableReader> readerClass) {
+        Class<? extends VariableReader> readerClass, String detectionPattern) {
         
         int index = 0;
         Set<File> filesToConsider = new HashSet<>();
@@ -151,8 +177,8 @@ public class Main {
             index++;
             if (file.getName().matches(filePattern)) {
                 try {
-                    Constructor<? extends VariableReader> cons = readerClass.getConstructor(File.class);
-                    VariableReader reader = cons.newInstance(file);
+                    Constructor<? extends VariableReader> cons = readerClass.getConstructor(File.class, String.class);
+                    VariableReader reader = cons.newInstance(file, detectionPattern);
                     codeVariables.addAll(reader.readFile());
                 } catch (ReflectiveOperationException exc) {
                     // TODO Auto-generated catch block

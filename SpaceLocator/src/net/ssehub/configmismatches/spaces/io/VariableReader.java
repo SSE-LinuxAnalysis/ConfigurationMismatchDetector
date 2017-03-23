@@ -22,8 +22,7 @@ public class VariableReader {
     
     public VariableReader(File file, String variablePattern) {
         this.file = file;
-        // (?m) = multi line mode
-        this.variablePattern = "(?m)" + variablePattern;
+        this.variablePattern = variablePattern;
         usedVariables = new HashSet<String>();
     }
     
@@ -31,7 +30,7 @@ public class VariableReader {
         try {
             String contents = FileUtils.readFileToString(file, (String) null);
             Matcher matcher = Pattern.compile(variablePattern).matcher(contents);
-            extracetVariables(matcher);
+            extractVariables(matcher);
         } catch (IOException e) {
             // TODO Auto-generated catch block
             e.printStackTrace();
@@ -40,7 +39,7 @@ public class VariableReader {
         return usedVariables;
     }
     
-    protected void extracetVariables(Matcher matcher) {
+    protected void extractVariables(Matcher matcher) {
         while (matcher.find()) {
             addVariable(matcher.group());
         }
