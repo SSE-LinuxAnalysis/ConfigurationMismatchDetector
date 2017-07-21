@@ -83,7 +83,12 @@ public class KbuildMinerToCsvConverter {
     }
     
     public static void main(String[] args) throws Exception {
-        convertKbuildMinerOutputToCsv("linux-4.4.1", "x86");
+        if (null == args || 2 != args.length) {
+            System.err.println("Useage: KbuildMinerToCsvConverter <linux-version> <arch>");
+            System.err.println("E.g.: KbuildMinerToCsvConverter linux-4.4.1 x86");
+        } else {
+            convertKbuildMinerOutputToCsv(args[0], args[1]);
+        }
     }
     
 }

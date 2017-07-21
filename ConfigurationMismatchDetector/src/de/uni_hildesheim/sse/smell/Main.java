@@ -16,8 +16,13 @@ public class Main {
     private static final String OUTPUT_FOLDER = "output/";
 
     public static void main(String[] args) throws Exception {
-        configMismatchRun("linux-4.4.1", "x86");
-        configMismatchResultPresentation("linux-4.4.1", "x86", "E:/research/linux_versions/linux-4.4.1");
+        if (null == args || 3 != args.length) {
+            System.err.println("Useage: Main <path to linux> <linux-version> <arch>");
+            System.err.println("E.g.: Main /data/linux-4.4.1 linux-4.4.1 x86");
+        } else {
+            configMismatchRun(args[1], args[2]);
+            configMismatchResultPresentation(args[1], args[2], args[0]);
+        }
     }
 
     private static void configMismatchRun(String version, String arch) throws Exception {
