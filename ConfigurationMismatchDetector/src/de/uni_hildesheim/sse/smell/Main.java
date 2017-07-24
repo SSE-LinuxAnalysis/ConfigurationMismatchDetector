@@ -16,16 +16,30 @@ public class Main {
     private static final String OUTPUT_FOLDER = "output/";
 
     public static void main(String[] args) throws Exception {
-        if (null == args || 3 != args.length) {
-            System.err.println("Useage: Main <path to linux> <linux-version> <arch>");
+        if (null == args || args.length < 3) {
+            System.err.println("Useage: Main <path to linux> <linux-version> <arch> [<No. of Threads>]");
             System.err.println("E.g.: Main /data/linux-4.4.1 linux-4.4.1 x86");
         } else {
-            configMismatchRun(args[1], args[2]);
+            int nThreads = 1;
+            if (args.length > 3) {
+                try {
+                    int value = Integer.valueOf(args[3]);
+                    if (value > 0) {
+                        nThreads = value;
+                    } else {
+                        System.err.println("Please specify a positive inter value as 4. value, received: " + value);
+                    }
+                } catch (NumberFormatException e) {
+                    System.err.println("Please specify a positive inter value as 4. value. Could not parse: "
+                        + args[3]);
+                }
+            }
+            configMismatchRun(args[1], args[2], nThreads);
             configMismatchResultPresentation(args[1], args[2], args[0]);
         }
     }
 
-    private static void configMismatchRun(String version, String arch) throws Exception {
+    private static void configMismatchRun(String version, String arch, int nThreads) throws Exception {
         String structure = INPUT_FOLDER + version + "/structure.csv";
         String makemodel = INPUT_FOLDER + version + "/" + arch + ".makemodel.csv";
         String kconfig = INPUT_FOLDER + version + "/" + arch + ".dimacs";
@@ -52,7 +66,8 @@ public class Main {
          * in any configuration (or more precisely has no "Feature Effect")
          */
         pipeline.addFilter(new NoDominatingFilter());
-        pipeline.addFilter(new PcSmellDetector(kconfig, result, 32));
+        // For the paper, we run this with 32 threads
+        pipeline.addFilter(new PcSmellDetector(kconfig, result, nThreads));
         
         // no output needed, because PcSmellDetector already writes it as it finds them
 //        pipeline.addFilter(new CsvPrinter(result));
