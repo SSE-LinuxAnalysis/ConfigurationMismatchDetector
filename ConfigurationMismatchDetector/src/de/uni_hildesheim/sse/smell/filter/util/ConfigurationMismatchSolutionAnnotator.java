@@ -3,6 +3,7 @@ package de.uni_hildesheim.sse.smell.filter.util;
 import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileFilter;
+import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.IOException;
@@ -23,10 +24,10 @@ import org.w3c.dom.NodeList;
 import org.xml.sax.SAXException;
 
 import de.uni_hildesheim.sse.smell.IProgressPrinter;
-import de.uni_hildesheim.sse.smell.data.IDataElement;
 import de.uni_hildesheim.sse.smell.data.AnnotatedConfigurationMismatchResult;
 import de.uni_hildesheim.sse.smell.data.AnnotatedConfigurationMismatchResult.Location;
 import de.uni_hildesheim.sse.smell.data.AnnotatedConfigurationMismatchResult.UnkownLocationException;
+import de.uni_hildesheim.sse.smell.data.IDataElement;
 import de.uni_hildesheim.sse.smell.data.VariableWithSolutions;
 import de.uni_hildesheim.sse.smell.filter.FilterException;
 import de.uni_hildesheim.sse.smell.filter.IFilter;
@@ -224,31 +225,46 @@ public class ConfigurationMismatchSolutionAnnotator implements IFilter {
     
     private void loadRsfPrompts(String rsfModelFile) throws ParserConfigurationException, SAXException, IOException {
         variablesWithPrompt = new HashSet<>();
-        DocumentBuilderFactory dbf = DocumentBuilderFactory.newInstance();
-        DocumentBuilder db = dbf.newDocumentBuilder();
-        Document document = db.parse(new File(rsfModelFile));
-        NodeList nodeList = document.getElementsByTagName("name");
-        for (int x = 0; x < nodeList.getLength(); x++) {
-            // search prompt
-            Node node = nodeList.item(x);
-            boolean hasprompt = false;
-            while ((node = node.getNextSibling()) != null) {
-                if (node.hasAttributes()) {
-                    Node attr = node.getAttributes().getNamedItem("type");
-                    if (attr != null) {
-                        String type = attr.getTextContent();
-                        if (type.equals("prompt") || type.equals("menu")) {
-                            hasprompt = true;
-                            break;
+
+        File rsfFile = new File(rsfModelFile);
+        try (FileInputStream in = new FileInputStream(rsfFile)) {
+            // skip everything until the "\n.\n"
+            char[] lastThree = {' ', ' ', ' '};
+            int index = 0;
+            while (lastThree[0] != '\n' || lastThree[1] != '.' || lastThree[2] != '\n') {
+                int read = in.read();
+                if (read == -1) {
+                    throw new IOException("Beginning of XML document inside RSF file not found.");
+                }
+                lastThree[index] = (char) read;
+                index = (index + 1) % lastThree.length;
+            }
+            
+            // Start of XML part found
+            DocumentBuilderFactory dbf = DocumentBuilderFactory.newInstance();
+            DocumentBuilder db = dbf.newDocumentBuilder();
+            Document document = db.parse(in);
+            NodeList nodeList = document.getElementsByTagName("name");
+            for (int x = 0; x < nodeList.getLength(); x++) {
+                // search prompt
+                Node node = nodeList.item(x);
+                boolean hasprompt = false;
+                while ((node = node.getNextSibling()) != null) {
+                    if (node.hasAttributes()) {
+                        Node attr = node.getAttributes().getNamedItem("type");
+                        if (attr != null) {
+                            String type = attr.getTextContent();
+                            if (type.equals("prompt") || type.equals("menu")) {
+                                hasprompt = true;
+                                break;
+                            }
                         }
-                        
                     }
                 }
+                if (hasprompt) {
+                    variablesWithPrompt.add("CONFIG_" + nodeList.item(x).getTextContent());
+                }
             }
-            if (hasprompt) {
-                variablesWithPrompt.add("CONFIG_" + nodeList.item(x).getTextContent());
-            }
-            // System.out.println(nodeList.item(x).getTextContent() + " -> " + hasprompt);
         }
     }
 
