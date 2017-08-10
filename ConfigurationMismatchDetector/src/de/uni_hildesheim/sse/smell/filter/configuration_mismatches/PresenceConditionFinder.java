@@ -54,12 +54,7 @@ public class PresenceConditionFinder implements IFilter {
         
         for (VariablePresenceConditions entry : variablePresenceConditions.values()) {
             
-            if (!entry.getVariable().startsWith("CONFIG_")) {
-//                System.out.println(entry.getVariable());
-//                for (String pc : entry.getPresenceConditions()) {
-//                    System.out.println("\t" + pc);
-//                }
-            } else {
+            if (entry.getVariable().startsWith("CONFIG_")) {
                 result.add(entry);
             }
             

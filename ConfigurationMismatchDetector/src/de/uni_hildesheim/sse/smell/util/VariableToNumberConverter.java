@@ -4,6 +4,8 @@ import java.io.BufferedReader;
 import java.io.FileReader;
 import java.io.IOException;
 import java.util.HashMap;
+import java.util.HashSet;
+import java.util.Set;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
@@ -23,6 +25,8 @@ public class VariableToNumberConverter {
     private HashMap<String, Integer> mapping;
     
     private int maxNumber = 0;
+    
+    private Set<String> temporaryVariables;
     
     /**
      * Creates a {@link VariableToNumberConverter} for the given DIMACS model.
@@ -45,6 +49,7 @@ public class VariableToNumberConverter {
      */
     public VariableToNumberConverter() {
         mapping = new HashMap<>();
+        temporaryVariables = new HashSet<>();
     }
     
     /**
@@ -125,6 +130,33 @@ public class VariableToNumberConverter {
         } else {
             mapping.put(name, ++maxNumber);
             return maxNumber;
+        }
+    }
+    
+    public int addTemporaryVariable(String name) {
+        if (mapping.get(name) != null) {
+            return mapping.get(name);
+        } else {
+            mapping.put(name, ++maxNumber);
+            temporaryVariables.add(name);
+            return maxNumber;
+        }
+    }
+    
+    public void clearTemporaryVariables() {
+        if (!temporaryVariables.isEmpty()) {
+            for (String temporaryVariable : temporaryVariables) {
+                mapping.remove(temporaryVariable);
+            }
+            
+            temporaryVariables.clear();
+            
+            maxNumber = 0;
+            for (int number : mapping.values()) {
+                if (number > maxNumber) {
+                    maxNumber = number;
+                }
+            }
         }
     }
     

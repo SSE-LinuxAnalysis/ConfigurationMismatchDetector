@@ -87,6 +87,8 @@ class PcSmellDetectorWorker extends AbstractSatSolverFilter {
                  * true results).
                  */
                 smell = buildResult(pcs, constr);
+            } else if ("CONFIG_APM_DISPLAY_BLANK".equals(pcs.getVariable()) || "CONFIG_ARCH_HAS_ATOMIC64_DEC_IF_POSITIVE".equals(pcs.getVariable())) {
+                System.out.println(pcs.getVariable() + " is no smell: " + buildResult(pcs, constr).toCsvLine());
             }
             
         } catch (VarNotFoundException e1) {

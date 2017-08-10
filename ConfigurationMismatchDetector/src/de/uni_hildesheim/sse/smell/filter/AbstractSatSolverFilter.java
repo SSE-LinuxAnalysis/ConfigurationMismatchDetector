@@ -39,7 +39,7 @@ public abstract class AbstractSatSolverFilter implements IFilter {
     private String dimacsModelFile;
     
     private ICnfConverter cnfConverter;
-
+    
     public AbstractSatSolverFilter(String dimacsModelFile) throws IOException {
         this.varConverter = new VariableToNumberConverter(dimacsModelFile, "CONFIG_"); // TODO: ENABLE_ for busybox 
         this.dimacsModelFile = dimacsModelFile;
@@ -83,26 +83,18 @@ public abstract class AbstractSatSolverFilter implements IFilter {
      */
     protected boolean isSolvable(List<ConstraintSyntaxTree> cnfParts) throws VarNotFoundException, ConstraintException, TimeoutException {
 
+        varConverter.clearTemporaryVariables(); // clear from previous stuff
         solver = getSolver(dimacsModelFile); // TODO: fix removing of constraints
-
-        // List of constraints added to the solver.
-        // This is needed since we want to clean the solver up after this
-        // iteration.
-//        List<IConstr> constraints = new ArrayList<>(); // TODO: fix removing of constraints
-
+        
         try {
-            // Temporarily (only for this iteration) add the constraint of the
-            // smell candidate to the solver.
-            // cleanUp() MUST BE CALLED BEFORE THE NEXT ITERATION!
             for (int i = 0; i < cnfParts.size(); i++) {
-                // TODO: HACK
                 int[] numbers = null;
                 do {
                     try {
                         numbers = varConverter.convertToDimacs(cnfParts.get(i));
                     } catch (VarNotFoundException e) {
                         if (e.getName().startsWith("CONFIG_")) {
-                            varConverter.addVarible(e.getName());
+                            varConverter.addTemporaryVariable(e.getName());
                             cnfParts.add(new OCLFeatureCall(new Variable(
                                     new DecisionVariableDeclaration(e.getName(), BooleanType.TYPE, null))
                                     , OclKeyWords.NOT));
@@ -111,33 +103,20 @@ public abstract class AbstractSatSolverFilter implements IFilter {
                         }
                     }
                 } while (numbers == null);
-                /*IConstr constr =*/ solver.addClause(new VecInt(numbers));
-                // constr is null if the clause is a tautology
-                // (see javadoc comment of org.sat4j.minisat.core.
-                // DataStructureFactory.createClause(IVecInt literals))
-//                if (constr != null) {
-//                    constraints.add(constr);// TODO: fix removing of constraints
-//                }
+                solver.addClause(new VecInt(numbers));
             }
+            
         } catch (ContradictionException e) {
             // This is thrown if the model is already not solvable
-//            cleanUp(constraints); // TODO: fix removing of constraints
             return false;
-//        } catch (VarNotFoundException e) {
-            // This is thrown if the code constraints contain variables that
-            // are not found in the VarModel.
-//            cleanUp(constraints); // TODO: fix removing of constraints
-//            throw e;
         }
 
         boolean result = false;
         try {
             result = solver.isSatisfiable();
         } catch (TimeoutException e) {
-//            cleanUp(constraints); // TODO: fix removing of constraints
             throw e;
         }
-//        cleanUp(constraints); // TODO: fix removing of constraints
         return result;
     }
 
